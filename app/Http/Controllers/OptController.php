@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\OPT;
 use App\Services\OPTService;
+use App\Http\Requests\StoreOptRequest;
+use App\Http\Requests\UpdateOptRequest;
 use Inertia\Inertia;
 
 class OptController extends Controller
@@ -24,33 +26,17 @@ class OptController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(StoreOptRequest $request)
     {
-        $validated = $request->validate([
-            'nama_opt' => 'required|string|max:100|unique:opt,nama_opt',
-        ], [
-            'nama_opt.required' => 'Nama OPT wajib diisi.',
-            'nama_opt.max'      => 'Nama OPT maksimal 100 karakter.',
-            'nama_opt.unique'   => 'Nama OPT sudah terdaftar.',
-        ]);
-
-        OPT::create($validated);
+        $this->optService->createOPT($request->validated());
 
         return redirect()->route('opt.index')
             ->with('success', 'OPT berhasil ditambahkan.');
     }
 
-    public function update(Request $request, OPT $opt)
+    public function update(UpdateOptRequest $request, OPT $opt)
     {
-        $validated = $request->validate([
-            'nama_opt' => 'required|string|max:100|unique:opt,nama_opt,' . $opt->id,
-        ], [
-            'nama_opt.required' => 'Nama OPT wajib diisi.',
-            'nama_opt.max'      => 'Nama OPT maksimal 100 karakter.',
-            'nama_opt.unique'   => 'Nama OPT sudah terdaftar.',
-        ]);
-
-        $opt->update($validated);
+        $this->optService->updateOPT($opt, $request->validated());
 
         return redirect()->route('opt.index')
             ->with('success', 'OPT berhasil diperbarui.');
@@ -58,7 +44,7 @@ class OptController extends Controller
 
     public function destroy(OPT $opt)
     {
-        $opt->delete();
+        $this->optService->deleteOPT($opt);
 
         return redirect()->route('opt.index')
             ->with('success', 'OPT berhasil dihapus.');

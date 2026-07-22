@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { Head, useForm, router } from '@inertiajs/react';
 import AdminLayout from '@/Layouts/AdminLayout';
-import { MapPin, Plus, Pencil, Trash2, X, Check, AlertTriangle, Search, ChevronLeft, ChevronRight, Bug } from 'lucide-react';
+import { MapPin, Plus, Pencil, Trash2, X, Check, AlertTriangle, Search, Bug } from 'lucide-react';
+import Pagination from '@/Components/Pagination';
 
 export default function OptIndex({ opts, search: initialSearch, flash }) {
     const [modalType, setModalType] = useState(null);
@@ -146,70 +147,17 @@ export default function OptIndex({ opts, search: initialSearch, flash }) {
                     </table>
                 </div>
 
-                {/* Pagination */}
-                <div className="p-4 bg-slate-50/60 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-semibold text-slate-600">
-                    <span>
-                        {total > 0 ? `Menampilkan ${from}-${to} dari ${total} data` : 'Tidak ada data'}
-                    </span>
-                    {meta && meta.last_page > 1 && (
-                        <div className="flex items-center gap-1.5">
-                            {/* Prev */}
-                            <button
-                                onClick={() => goToPage(links.prev)}
-                                disabled={!links.prev}
-                                className="p-2 border border-slate-200 rounded-lg bg-white text-slate-400 hover:text-slate-600 transition disabled:opacity-40 disabled:cursor-not-allowed"
-                            >
-                                <ChevronLeft className="w-4 h-4" />
-                            </button>
-
-                            {/* First page shortcut */}
-                            {pages[0] > 1 && (
-                                <>
-                                    <button
-                                        onClick={() => router.get(route('opt.index'), { search: searchValue, page: 1 }, { preserveState: true })}
-                                        className="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 flex items-center justify-center"
-                                    >1</button>
-                                    {pages[0] > 2 && <span className="px-1 text-slate-400">...</span>}
-                                </>
-                            )}
-
-                            {/* Page numbers */}
-                            {pages.map((page) => (
-                                <button
-                                    key={page}
-                                    onClick={() => router.get(route('opt.index'), { search: searchValue, page }, { preserveState: true })}
-                                    className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold transition ${
-                                        page === meta.current_page
-                                            ? 'bg-[#006654] text-white shadow-sm'
-                                            : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
-                                    }`}
-                                >
-                                    {page}
-                                </button>
-                            ))}
-
-                            {/* Last page shortcut */}
-                            {pages[pages.length - 1] < meta.last_page && (
-                                <>
-                                    {pages[pages.length - 1] < meta.last_page - 1 && <span className="px-1 text-slate-400">...</span>}
-                                    <button
-                                        onClick={() => router.get(route('opt.index'), { search: searchValue, page: meta.last_page }, { preserveState: true })}
-                                        className="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 flex items-center justify-center"
-                                    >{meta.last_page}</button>
-                                </>
-                            )}
-
-                            {/* Next */}
-                            <button
-                                onClick={() => goToPage(links.next)}
-                                disabled={!links.next}
-                                className="p-2 border border-slate-200 rounded-lg bg-white text-slate-700 hover:bg-slate-50 transition disabled:opacity-40 disabled:cursor-not-allowed"
-                            >
-                                <ChevronRight className="w-4 h-4" />
-                            </button>
-                        </div>
-                    )}
-                </div>
+                <Pagination 
+                    meta={meta} 
+                    links={links} 
+                    onPageChange={(pageOrUrl, isPageNum = false) => {
+                        if (isPageNum) {
+                            router.get(route('opt.index'), { search: searchValue, page: pageOrUrl }, { preserveState: true, preserveScroll: true });
+                        } else {
+                            router.get(pageOrUrl, {}, { preserveState: true, preserveScroll: true });
+                        }
+                    }} 
+                />
             </div>
 
             {/* Modal Create / Edit */}

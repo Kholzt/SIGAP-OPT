@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Kecamatan;
 use App\Services\KecamatanService;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreKecamatanRequest;
+use App\Http\Requests\UpdateKecamatanRequest;
 use Inertia\Inertia;
 
 class KecamatanController extends Controller
@@ -17,40 +19,23 @@ class KecamatanController extends Controller
         $perPage = $request->input('per_page', 10);
 
         $kecamatans = $this->kecamatanService->getPaginatedKecamatan($search, (int) $perPage);
-
         return Inertia::render('kecamatan/Index', [
             'kecamatans' => $kecamatans,
             'search'     => $search,
         ]);
     }
 
-    public function store(Request $request)
+    public function store(StoreKecamatanRequest $request)
     {
-        $validated = $request->validate([
-            'nama_kecamatan' => 'required|string|max:100|unique:kecamatan,nama_kecamatan',
-        ], [
-            'nama_kecamatan.required' => 'Nama kecamatan wajib diisi.',
-            'nama_kecamatan.max'      => 'Nama kecamatan maksimal 100 karakter.',
-            'nama_kecamatan.unique'   => 'Nama kecamatan sudah terdaftar.',
-        ]);
-
-        Kecamatan::create($validated);
+        $this->kecamatanService->createKecamatan($request->validated());
 
         return redirect()->route('kecamatan.index')
             ->with('success', 'Kecamatan berhasil ditambahkan.');
     }
 
-    public function update(Request $request, Kecamatan $kecamatan)
+    public function update(UpdateKecamatanRequest $request, Kecamatan $kecamatan)
     {
-        $validated = $request->validate([
-            'nama_kecamatan' => 'required|string|max:100|unique:kecamatan,nama_kecamatan,' . $kecamatan->id,
-        ], [
-            'nama_kecamatan.required' => 'Nama kecamatan wajib diisi.',
-            'nama_kecamatan.max'      => 'Nama kecamatan maksimal 100 karakter.',
-            'nama_kecamatan.unique'   => 'Nama kecamatan sudah terdaftar.',
-        ]);
-
-        $kecamatan->update($validated);
+        $this->kecamatanService->updateKecamatan($kecamatan, $request->validated());
 
         return redirect()->route('kecamatan.index')
             ->with('success', 'Kecamatan berhasil diperbarui.');
@@ -58,7 +43,7 @@ class KecamatanController extends Controller
 
     public function destroy(Kecamatan $kecamatan)
     {
-        $kecamatan->delete();
+        $this->kecamatanService->deleteKecamatan($kecamatan);
 
         return redirect()->route('kecamatan.index')
             ->with('success', 'Kecamatan berhasil dihapus.');

@@ -17,4 +17,20 @@ class OPTService
             ->paginate($perPage)
             ->withQueryString();
     }
+
+    public function createOPT(array $data)
+    {
+        return OPT::create($data);
+    }
+
+    public function updateOPT(OPT $opt, array $data)
+    {
+        $opt->update($data);
+        return $opt;
+    }
+
+    public function deleteOPT(OPT $opt)
+    {
+        return $opt->delete();
+    }
 }
