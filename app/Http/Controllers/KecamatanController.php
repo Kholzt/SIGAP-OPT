@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 namespace App\Http\Controllers;
 
@@ -18,7 +18,7 @@ class KecamatanController extends Controller
 
         $kecamatans = $this->kecamatanService->getPaginatedKecamatan($search, (int) $perPage);
 
-        return Inertia::render('Kecamatan/Index', [
+        return Inertia::render('kecamatan/Index', [
             'kecamatans' => $kecamatans,
             'search'     => $search,
         ]);

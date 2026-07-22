@@ -1,9 +1,9 @@
-﻿import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Head, useForm, router } from '@inertiajs/react';
 import AdminLayout from '@/Layouts/AdminLayout';
-import { Bug, Plus, Pencil, Trash2, X, Check, AlertTriangle, Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, Plus, Pencil, Trash2, X, Check, AlertTriangle, Search, ChevronLeft, ChevronRight, Bug } from 'lucide-react';
 
-export default function OPTIndex({ opts, search: initialSearch, flash }) {
+export default function OptIndex({ opts, search: initialSearch, flash }) {
     const [modalType, setModalType] = useState(null);
     const [selected, setSelected] = useState(null);
     const [searchValue, setSearchValue] = useState(initialSearch ?? '');
@@ -80,7 +80,7 @@ export default function OPTIndex({ opts, search: initialSearch, flash }) {
                         <Bug className="w-6 h-6 text-emerald-500" />
                         Master Data OPT
                     </h1>
-                    <p className="text-sm text-slate-500 mt-1">Kelola daftar Organisme Pengganggu Tumbuhan (OPT).</p>
+                    <p className="text-sm text-slate-500 mt-1">Kelola daftar Organisme Pengganggu Tumbuhan (OPT) yang terdaftar dalam sistem.</p>
                 </div>
                 <button onClick={openCreate} className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition shadow-sm">
                     <Plus className="w-4 h-4" />
@@ -234,12 +234,12 @@ export default function OPTIndex({ opts, search: initialSearch, flash }) {
                                     type="text"
                                     value={data.nama_opt}
                                     onChange={(e) => setData('nama_opt', e.target.value)}
-                                    placeholder="Contoh: Wereng Batang Coklat"
-                                    maxLength={30}
+                                    placeholder="Contoh: Tikus"
+                                    maxLength={100}
                                     className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition ${errors.nama_opt ? 'border-rose-400 bg-rose-50' : 'border-slate-200'}`}
                                 />
                                 {errors.nama_opt && <p className="mt-1.5 text-xs text-rose-600 font-medium">{errors.nama_opt}</p>}
-                                <p className="mt-1 text-xs text-slate-400">{data.nama_opt.length}/30 karakter</p>
+                                <p className="mt-1 text-xs text-slate-400">{data.nama_opt.length}/100 karakter</p>
                             </div>
                             <div className="flex justify-end gap-3 pt-2">
                                 <button type="button" onClick={closeModal} className="px-4 py-2 text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition">
