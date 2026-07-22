@@ -1,11 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import AdminLayout from '../Layouts/AdminLayout';
-import { Sliders, Zap, Plus, Minus, Layers, Info, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import AdminLayout from "../../Layouts/AdminLayout";
+import { Head } from "@inertiajs/react";
+
+import {
+    Sliders,
+    Zap,
+    Plus,
+    Minus,
+    Layers,
+    Info,
+    ChevronLeft,
+    ChevronRight,
+} from "lucide-react";
 
 export default function ModelPrediksi() {
-    const [periode, setPeriode] = useState('2025/2026');
-    const [desa, setDesa] = useState('Desa A');
-    const [jenisOPT, setJenisOPT] = useState('Tikus Sawah');
+    const [periode, setPeriode] = useState("2025/2026");
+    const [desa, setDesa] = useState("Desa A");
+    const [jenisOPT, setJenisOPT] = useState("Tikus Sawah");
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
@@ -13,14 +24,16 @@ export default function ModelPrediksi() {
     }, []);
 
     const predictionResults = [
-        { id: 1, desa: 'Bataan', jenisOPT: 'Tikus Sawah', luas: '12.5' },
-        { id: 2, desa: 'Kademangan', jenisOPT: 'Tikus Sawah', luas: '8.7' },
-        { id: 3, desa: 'Dawuhan', jenisOPT: 'Tikus Sawah', luas: '6.3' },
-        { id: 4, desa: 'Jurang sapi', jenisOPT: 'Tikus Sawah', luas: '4.1' },
+        { id: 1, desa: "Bataan", jenisOPT: "Tikus Sawah", luas: "12.5" },
+        { id: 2, desa: "Kademangan", jenisOPT: "Tikus Sawah", luas: "8.7" },
+        { id: 3, desa: "Dawuhan", jenisOPT: "Tikus Sawah", luas: "6.3" },
+        { id: 4, desa: "Jurang sapi", jenisOPT: "Tikus Sawah", luas: "4.1" },
     ];
 
     return (
         <AdminLayout currentTab="Model Prediksi">
+            <Head title="Model Prediksi" />
+
             <div className="space-y-6">
                 {/* Top Split Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
@@ -29,7 +42,9 @@ export default function ModelPrediksi() {
                         <div className="space-y-5">
                             <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
                                 <Sliders className="w-5 h-5 text-emerald-800" />
-                                <h2 className="text-lg font-bold text-slate-900">Parameter Analisis</h2>
+                                <h2 className="text-lg font-bold text-slate-900">
+                                    Parameter Analisis
+                                </h2>
                             </div>
 
                             <div className="space-y-4">
@@ -39,26 +54,36 @@ export default function ModelPrediksi() {
                                     </label>
                                     <select
                                         value={periode}
-                                        onChange={(e) => setPeriode(e.target.value)}
+                                        onChange={(e) =>
+                                            setPeriode(e.target.value)
+                                        }
                                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
                                     >
-                                        <option value="2025/2026">2025/2026</option>
-                                        <option value="2024/2025">2024/2025</option>
+                                        <option value="2025/2026">
+                                            2025/2026
+                                        </option>
+                                        <option value="2024/2025">
+                                            2024/2025
+                                        </option>
                                     </select>
                                 </div>
 
                                 <div>
                                     <label className="block text-xs font-semibold text-slate-600 mb-1.5">
-                                        Desa
+                                        Kecamatan
                                     </label>
                                     <select
                                         value={desa}
-                                        onChange={(e) => setDesa(e.target.value)}
+                                        onChange={(e) =>
+                                            setDesa(e.target.value)
+                                        }
                                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
                                     >
                                         <option value="Desa A">Desa A</option>
                                         <option value="Bataan">Bataan</option>
-                                        <option value="Kademangan">Kademangan</option>
+                                        <option value="Kademangan">
+                                            Kademangan
+                                        </option>
                                     </select>
                                 </div>
 
@@ -68,11 +93,17 @@ export default function ModelPrediksi() {
                                     </label>
                                     <select
                                         value={jenisOPT}
-                                        onChange={(e) => setJenisOPT(e.target.value)}
+                                        onChange={(e) =>
+                                            setJenisOPT(e.target.value)
+                                        }
                                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
                                     >
-                                        <option value="Tikus Sawah">Tikus Sawah</option>
-                                        <option value="Wereng Batang Coklat">Wereng Batang Coklat</option>
+                                        <option value="Tikus Sawah">
+                                            Tikus Sawah
+                                        </option>
+                                        <option value="Wereng Batang Coklat">
+                                            Wereng Batang Coklat
+                                        </option>
                                         <option value="Blast">Blast</option>
                                     </select>
                                 </div>
@@ -111,29 +142,101 @@ export default function ModelPrediksi() {
                         {/* Interactive GIS Visual / Simulation Canvas */}
                         <div className="w-full h-full min-h-[360px] relative bg-slate-900 flex items-center justify-center overflow-hidden">
                             {/* Stylized Spatial GIS Overlay */}
-                            <svg className="w-full h-full absolute inset-0 opacity-85" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+                            <svg
+                                className="w-full h-full absolute inset-0 opacity-85"
+                                viewBox="0 0 800 500"
+                                preserveAspectRatio="xMidYMid slice"
+                            >
                                 <defs>
-                                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stopColor="#10B981" stopOpacity="0.8" />
-                                        <stop offset="50%" stopColor="#F59E0B" stopOpacity="0.8" />
-                                        <stop offset="100%" stopColor="#EF4444" stopOpacity="0.8" />
+                                    <linearGradient
+                                        id="grad1"
+                                        x1="0%"
+                                        y1="0%"
+                                        x2="100%"
+                                        y2="100%"
+                                    >
+                                        <stop
+                                            offset="0%"
+                                            stopColor="#10B981"
+                                            stopOpacity="0.8"
+                                        />
+                                        <stop
+                                            offset="50%"
+                                            stopColor="#F59E0B"
+                                            stopOpacity="0.8"
+                                        />
+                                        <stop
+                                            offset="100%"
+                                            stopColor="#EF4444"
+                                            stopOpacity="0.8"
+                                        />
                                     </linearGradient>
                                 </defs>
                                 {/* Grid lines */}
-                                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+                                <pattern
+                                    id="grid"
+                                    width="40"
+                                    height="40"
+                                    patternUnits="userSpaceOnUse"
+                                >
+                                    <path
+                                        d="M 40 0 L 0 0 0 40"
+                                        fill="none"
+                                        stroke="rgba(255,255,255,0.05)"
+                                        strokeWidth="1"
+                                    />
                                 </pattern>
-                                <rect width="100%" height="100%" fill="url(#grid)" />
+                                <rect
+                                    width="100%"
+                                    height="100%"
+                                    fill="url(#grid)"
+                                />
 
                                 {/* Spatial heat polygons */}
-                                <polygon points="350,80 480,120 520,240 460,380 340,420 280,310 300,180" fill="url(#grad1)" stroke="#ffffff" strokeWidth="1.5" opacity="0.85" />
-                                <polygon points="480,120 620,150 680,260 610,340 520,240" fill="#10B981" opacity="0.6" stroke="#ffffff" strokeWidth="1" />
-                                <polygon points="220,200 300,180 280,310 180,330 140,250" fill="#3B82F6" opacity="0.5" stroke="#ffffff" strokeWidth="1" />
+                                <polygon
+                                    points="350,80 480,120 520,240 460,380 340,420 280,310 300,180"
+                                    fill="url(#grad1)"
+                                    stroke="#ffffff"
+                                    strokeWidth="1.5"
+                                    opacity="0.85"
+                                />
+                                <polygon
+                                    points="480,120 620,150 680,260 610,340 520,240"
+                                    fill="#10B981"
+                                    opacity="0.6"
+                                    stroke="#ffffff"
+                                    strokeWidth="1"
+                                />
+                                <polygon
+                                    points="220,200 300,180 280,310 180,330 140,250"
+                                    fill="#3B82F6"
+                                    opacity="0.5"
+                                    stroke="#ffffff"
+                                    strokeWidth="1"
+                                />
 
                                 {/* Spatial contour dots & labels */}
-                                <circle cx="420" cy="220" r="45" fill="#EF4444" opacity="0.6" />
-                                <circle cx="420" cy="220" r="25" fill="#B91C1C" opacity="0.8" />
-                                <circle cx="360" cy="310" r="30" fill="#F59E0B" opacity="0.7" />
+                                <circle
+                                    cx="420"
+                                    cy="220"
+                                    r="45"
+                                    fill="#EF4444"
+                                    opacity="0.6"
+                                />
+                                <circle
+                                    cx="420"
+                                    cy="220"
+                                    r="25"
+                                    fill="#B91C1C"
+                                    opacity="0.8"
+                                />
+                                <circle
+                                    cx="360"
+                                    cy="310"
+                                    r="30"
+                                    fill="#F59E0B"
+                                    opacity="0.7"
+                                />
                             </svg>
 
                             {/* Floating Map Legend Box Bottom Left */}
@@ -142,7 +245,9 @@ export default function ModelPrediksi() {
                                     <Info className="w-4 h-4 text-emerald-700" />
                                     <span>Keterangan Peta</span>
                                 </div>
-                                <p className="text-[11px] font-medium text-slate-500 mb-2">Luas Serangan (Ha)</p>
+                                <p className="text-[11px] font-medium text-slate-500 mb-2">
+                                    Luas Serangan (Ha)
+                                </p>
 
                                 <div className="space-y-1.5 font-semibold text-slate-700">
                                     <div className="flex items-center gap-2">
@@ -170,7 +275,9 @@ export default function ModelPrediksi() {
                 {/* Bottom Prediction Results Table */}
                 <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
                     <div className="p-6 border-b border-slate-100">
-                        <h2 className="text-lg font-bold text-slate-900">Prediksi Luas Serangan</h2>
+                        <h2 className="text-lg font-bold text-slate-900">
+                            Prediksi Luas Serangan
+                        </h2>
                         <p className="text-xs text-slate-500 mt-0.5">
                             Hasil prediksi luas serangan periode 2024/2025
                         </p>
@@ -182,15 +289,26 @@ export default function ModelPrediksi() {
                                 <tr className="bg-slate-50/70 border-b border-slate-200 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
                                     <th className="py-4 px-6">DESA</th>
                                     <th className="py-4 px-6">JENIS OPT</th>
-                                    <th className="py-4 px-6 text-right">LUAS SERANGAN (HA)</th>
+                                    <th className="py-4 px-6 text-right">
+                                        LUAS SERANGAN (HA)
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-slate-100 text-sm font-medium">
                                 {predictionResults.map((row) => (
-                                    <tr key={row.id} className="hover:bg-slate-50/60 transition">
-                                        <td className="py-4 px-6 font-bold text-slate-900">{row.desa}</td>
-                                        <td className="py-4 px-6 text-slate-700 font-semibold">{row.jenisOPT}</td>
-                                        <td className="py-4 px-6 text-right font-bold text-slate-900">{row.luas}</td>
+                                    <tr
+                                        key={row.id}
+                                        className="hover:bg-slate-50/60 transition"
+                                    >
+                                        <td className="py-4 px-6 font-bold text-slate-900">
+                                            {row.desa}
+                                        </td>
+                                        <td className="py-4 px-6 text-slate-700 font-semibold">
+                                            {row.jenisOPT}
+                                        </td>
+                                        <td className="py-4 px-6 text-right font-bold text-slate-900">
+                                            {row.luas}
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>

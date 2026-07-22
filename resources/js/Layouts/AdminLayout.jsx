@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from '@inertiajs/react';
+import React, { useState } from "react";
+import { Link } from "@inertiajs/react";
 import {
     LayoutDashboard,
     Bug,
@@ -11,34 +11,41 @@ import {
     LogOut,
     Menu,
     UserCircle,
-    Bell
-} from 'lucide-react';
+    Bell,
+    Database,
+    Map,
+} from "lucide-react";
 
-export default function AdminLayout({ children, currentTab = 'Dashboard' }) {
+export default function AdminLayout({ children, currentTab = "Dashboard" }) {
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
     const navItems = [
-        { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-        { name: 'Data Serangan OPT', href: '/data-serangan', icon: Bug },
-        { name: 'Model Prediksi', href: '/model-prediksi', icon: TrendingUp },
-        { name: 'Status Endemis', href: '/model-prediksi', icon: MapPin },
-        { name: 'Puncak Serangan', href: '/puncak-serangan', icon: BarChart3 },
-        { name: 'Pengaturan', href: '#', icon: Settings },
+        { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+        { name: "Data Serangan OPT", href: "/data-serangan", icon: Bug },
+        { name: "Model Prediksi", href: "/model-prediksi", icon: TrendingUp },
+        { name: "Status Endemis", href: "/model-prediksi", icon: MapPin },
+        { name: "Puncak Serangan", href: "/puncak-serangan", icon: BarChart3 },
+        { name: "Data OPT", href: "/opt", icon: Database },
+        { name: "Data Kecamatan", href: "/kecamatan", icon: Map },
+        { name: "Pengaturan", href: "#", icon: Settings },
     ];
 
     return (
-        <div className="min-h-screen bg-[#F8FAFC] flex text-slate-800 font-sans">
+        <div className="h-screen bg-[#F8FAFC] flex text-slate-800 font-sans overflow-hidden">
             {/* Sidebar */}
             <aside
-                className={`fixed lg:static inset-y-0 left-0 z-40 w-64 bg-white border-r border-slate-200 flex flex-col justify-between transition-transform duration-300 ${
-                    sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+                className={`sticky top-0 h-screen z-40 w-64 shrink-0 bg-white border-r border-slate-200 flex flex-col justify-between overflow-y-auto transition-all duration-300 ${
+                    sidebarOpen
+                        ? "translate-x-0"
+                        : "-translate-x-full lg:translate-x-0 hidden lg:flex"
                 }`}
             >
                 <div>
                     {/* Brand Header */}
                     <div className="p-6 border-b border-slate-100">
                         <h1 className="text-xl font-extrabold text-slate-900 tracking-tight">
-                            AgriPredict <span className="text-emerald-600">GIS</span>
+                            AgriPredict{" "}
+                            <span className="text-emerald-600">GIS</span>
                         </h1>
                         <p className="text-xs text-slate-500 font-medium mt-0.5">
                             Admin Panel • Dinas Pertanian
@@ -56,11 +63,13 @@ export default function AdminLayout({ children, currentTab = 'Dashboard' }) {
                                     href={item.href}
                                     className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
                                         isActive
-                                            ? 'bg-[#6EE7B7] text-slate-900 shadow-xs'
-                                            : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                                            ? "bg-[#6EE7B7] text-slate-900 shadow-xs"
+                                            : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                                     }`}
                                 >
-                                    <Icon className={`w-5 h-5 ${isActive ? 'text-slate-900' : 'text-slate-500'}`} />
+                                    <Icon
+                                        className={`w-5 h-5 ${isActive ? "text-slate-900" : "text-slate-500"}`}
+                                    />
                                     <span>{item.name}</span>
                                 </Link>
                             );
@@ -88,7 +97,7 @@ export default function AdminLayout({ children, currentTab = 'Dashboard' }) {
             </aside>
 
             {/* Main Content Area */}
-            <div className="flex-1 flex flex-col min-w-0">
+            <div className="flex-1 flex flex-col min-w-0 overflow-y-auto">
                 {/* Header Navbar */}
                 <header className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between sticky top-0 z-30 shadow-xs">
                     <div className="flex items-center gap-4">
@@ -108,7 +117,9 @@ export default function AdminLayout({ children, currentTab = 'Dashboard' }) {
                         </button>
                         <div className="flex items-center gap-3 pl-4 border-l border-slate-200">
                             <div className="text-right hidden sm:block">
-                                <p className="text-sm font-bold text-slate-800 leading-none">Admin Utama</p>
+                                <p className="text-sm font-bold text-slate-800 leading-none">
+                                    Admin Utama
+                                </p>
                                 <p className="text-[11px] font-semibold text-slate-400 tracking-wider uppercase mt-1">
                                     DINAS PERTANIAN
                                 </p>
@@ -119,17 +130,26 @@ export default function AdminLayout({ children, currentTab = 'Dashboard' }) {
                 </header>
 
                 {/* Main Body */}
-                <main className="flex-1 p-6 lg:p-8 overflow-y-auto">
+                <main className="flex-1 p-6 lg:p-8">
                     {children}
                 </main>
 
                 {/* Footer */}
                 <footer className="bg-white border-t border-slate-200 py-4 px-6 text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-2">
-                    <p>© 2025 AgriPredict GIS - Sistem Informasi Geografis & Prediksi OPT Nasional.</p>
+                    <p>
+                        © 2025 AgriPredict GIS - Sistem Informasi Geografis &
+                        Prediksi OPT Nasional.
+                    </p>
                     <div className="flex gap-4 font-medium text-slate-600">
-                        <a href="#" className="hover:underline">Syarat & Ketentuan</a>
-                        <a href="#" className="hover:underline">Kebijakan Privasi</a>
-                        <a href="#" className="hover:underline">Kontak Teknis</a>
+                        <a href="#" className="hover:underline">
+                            Syarat & Ketentuan
+                        </a>
+                        <a href="#" className="hover:underline">
+                            Kebijakan Privasi
+                        </a>
+                        <a href="#" className="hover:underline">
+                            Kontak Teknis
+                        </a>
                     </div>
                 </footer>
             </div>

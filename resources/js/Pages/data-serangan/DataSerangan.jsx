@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import AdminLayout from '../Layouts/AdminLayout';
+import React, { useState } from "react";
+import AdminLayout from "../../Layouts/AdminLayout";
+import { Head } from "@inertiajs/react";
+
 import {
     Plus,
     FileSpreadsheet,
@@ -12,68 +14,70 @@ import {
     ChevronRight,
     Bug,
     AlertTriangle,
-    Clock
-} from 'lucide-react';
+    Clock,
+} from "lucide-react";
 
-export default function DataSerangan() {
-    const [selectedWilayah, setSelectedWilayah] = useState('Semua Wilayah');
-    const [selectedOPT, setSelectedOPT] = useState('Semua Jenis');
+export default function DataSerangan({ allKecamatan, allOPT }) {
+    const [selectedWilayah, setSelectedWilayah] = useState("Semua Wilayah");
+    const [selectedOPT, setSelectedOPT] = useState("Semua Jenis");
 
     const tableData = [
         {
             id: 1,
-            bulan: 'Maret',
+            bulan: "Maret",
             tahun: 2024,
-            desa: 'Bataan',
-            luasSerangan: '12.5',
-            luasPuso: '0',
-            luasPenanganan: '10.2',
-            jenisOPT: 'Wereng Batang Coklat',
+            desa: "Bataan",
+            luasSerangan: "12.5",
+            luasPuso: "0",
+            luasPenanganan: "10.2",
+            jenisOPT: "Wereng Batang Coklat",
         },
         {
             id: 2,
-            bulan: 'Maret',
+            bulan: "Maret",
             tahun: 2024,
-            desa: 'Dawuhan',
-            luasSerangan: '4.2',
-            luasPuso: '0',
-            luasPenanganan: '4.2',
-            jenisOPT: 'Tikus Sawah',
+            desa: "Dawuhan",
+            luasSerangan: "4.2",
+            luasPuso: "0",
+            luasPenanganan: "4.2",
+            jenisOPT: "Tikus Sawah",
         },
         {
             id: 3,
-            bulan: 'Februari',
+            bulan: "Februari",
             tahun: 2024,
-            desa: 'Kademangan',
-            luasSerangan: '8.7',
-            luasPuso: '0',
-            luasPenanganan: '5.0',
-            jenisOPT: 'Blast',
+            desa: "Kademangan",
+            luasSerangan: "8.7",
+            luasPuso: "0",
+            luasPenanganan: "5.0",
+            jenisOPT: "Blast",
         },
         {
             id: 4,
-            bulan: 'Februari',
+            bulan: "Februari",
             tahun: 2024,
-            desa: 'Jurang sapi',
-            luasSerangan: '15.0',
-            luasPuso: '1.2',
-            luasPenanganan: '12.0',
-            jenisOPT: 'Penggerek Batang',
+            desa: "Jurang sapi",
+            luasSerangan: "15.0",
+            luasPuso: "1.2",
+            luasPenanganan: "12.0",
+            jenisOPT: "Penggerek Batang",
         },
         {
             id: 5,
-            bulan: 'Januari',
+            bulan: "Januari",
             tahun: 2024,
-            desa: 'Wonosari',
-            luasSerangan: '6.4',
-            luasPuso: '0',
-            luasPenanganan: '6.4',
-            jenisOPT: 'Tungro',
+            desa: "Wonosari",
+            luasSerangan: "6.4",
+            luasPuso: "0",
+            luasPenanganan: "6.4",
+            jenisOPT: "Tungro",
         },
     ];
 
     return (
         <AdminLayout currentTab="Data Serangan OPT">
+            <Head title="Data Serangan OPT" />
+
             <div className="space-y-6">
                 {/* Header & Actions */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -81,7 +85,9 @@ export default function DataSerangan() {
                         <nav className="text-xs font-semibold text-slate-400 mb-1 flex items-center gap-1.5">
                             <span>Dashboard</span>
                             <span>/</span>
-                            <span className="text-emerald-700">Manajemen OPT</span>
+                            <span className="text-emerald-700">
+                                Manajemen OPT
+                            </span>
                         </nav>
                     </div>
 
@@ -109,7 +115,9 @@ export default function DataSerangan() {
                             <p className="text-xs font-bold text-slate-400 uppercase tracking-wide">
                                 Total Laporan Bulan Ini
                             </p>
-                            <p className="text-2xl font-extrabold text-slate-900 mt-0.5">1,248</p>
+                            <p className="text-2xl font-extrabold text-slate-900 mt-0.5">
+                                1,248
+                            </p>
                         </div>
                         <div className="absolute right-0 bottom-0 w-16 h-16 bg-teal-50 rounded-tl-full opacity-50 -z-0"></div>
                     </div>
@@ -123,7 +131,9 @@ export default function DataSerangan() {
                             <p className="text-xs font-bold text-slate-400 uppercase tracking-wide">
                                 Status Waspada Tinggi
                             </p>
-                            <p className="text-2xl font-extrabold text-slate-900 mt-0.5">12 Wilayah</p>
+                            <p className="text-2xl font-extrabold text-slate-900 mt-0.5">
+                                12 Wilayah
+                            </p>
                         </div>
                         <div className="absolute right-0 bottom-0 w-16 h-16 bg-rose-50 rounded-tl-full opacity-50 -z-0"></div>
                     </div>
@@ -137,7 +147,9 @@ export default function DataSerangan() {
                             <p className="text-xs font-bold text-slate-400 uppercase tracking-wide">
                                 Update Terakhir
                             </p>
-                            <p className="text-2xl font-extrabold text-slate-900 mt-0.5">2 Menit Lalu</p>
+                            <p className="text-2xl font-extrabold text-slate-900 mt-0.5">
+                                2 Menit Lalu
+                            </p>
                         </div>
                         <div className="absolute right-0 bottom-0 w-16 h-16 bg-blue-50 rounded-tl-full opacity-50 -z-0"></div>
                     </div>
@@ -147,23 +159,34 @@ export default function DataSerangan() {
                 <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs space-y-4">
                     <div className="flex items-center gap-2">
                         <Filter className="w-5 h-5 text-emerald-800" />
-                        <h3 className="text-base font-bold text-slate-900">Filter Data Serangan</h3>
+                        <h3 className="text-base font-bold text-slate-900">
+                            Filter Data Serangan
+                        </h3>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
                         <div className="md:col-span-4">
                             <label className="block text-xs font-semibold text-slate-600 mb-1.5">
-                                Wilayah / Desa
+                                Wilayah / Kecamatan
                             </label>
                             <select
                                 value={selectedWilayah}
-                                onChange={(e) => setSelectedWilayah(e.target.value)}
+                                onChange={(e) =>
+                                    setSelectedWilayah(e.target.value)
+                                }
                                 className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
                             >
-                                <option value="Semua Wilayah">Semua Wilayah</option>
-                                <option value="Bataan">Bataan</option>
-                                <option value="Dawuhan">Dawuhan</option>
-                                <option value="Kademangan">Kademangan</option>
+                                <option value="Semua Wilayah">
+                                    Semua Wilayah
+                                </option>
+                                {allKecamatan.map((kecamatan) => (
+                                    <option
+                                        key={kecamatan.id}
+                                        value={kecamatan.id}
+                                    >
+                                        {kecamatan.nama_kecamatan}
+                                    </option>
+                                ))}
                             </select>
                         </div>
 
@@ -177,9 +200,11 @@ export default function DataSerangan() {
                                 className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
                             >
                                 <option value="Semua Jenis">Semua Jenis</option>
-                                <option value="Wereng Batang Coklat">Wereng Batang Coklat</option>
-                                <option value="Tikus Sawah">Tikus Sawah</option>
-                                <option value="Blast">Blast</option>
+                                {allOPT.map((opt) => (
+                                    <option key={opt.id} value={opt.id}>
+                                        {opt.nama_opt}
+                                    </option>
+                                ))}
                             </select>
                         </div>
 
@@ -203,23 +228,48 @@ export default function DataSerangan() {
                                     <th className="py-4 px-6">BULAN</th>
                                     <th className="py-4 px-6">TAHUN</th>
                                     <th className="py-4 px-6">DESA</th>
-                                    <th className="py-4 px-6">LUAS SERANGAN (HA)</th>
-                                    <th className="py-4 px-6">LUAS PUSO (HA)</th>
-                                    <th className="py-4 px-6">LUAS PENANGANAN (HA)</th>
+                                    <th className="py-4 px-6">
+                                        LUAS SERANGAN (HA)
+                                    </th>
+                                    <th className="py-4 px-6">
+                                        LUAS PUSO (HA)
+                                    </th>
+                                    <th className="py-4 px-6">
+                                        LUAS PENANGANAN (HA)
+                                    </th>
                                     <th className="py-4 px-6">JENIS OPT</th>
-                                    <th className="py-4 px-6 text-center">AKSI</th>
+                                    <th className="py-4 px-6 text-center">
+                                        AKSI
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-slate-100 text-sm font-medium">
                                 {tableData.map((row) => (
-                                    <tr key={row.id} className="hover:bg-slate-50/60 transition">
-                                        <td className="py-4 px-6 text-slate-800 font-semibold">{row.bulan}</td>
-                                        <td className="py-4 px-6 text-slate-600">{row.tahun}</td>
-                                        <td className="py-4 px-6 font-bold text-slate-900">{row.desa}</td>
-                                        <td className="py-4 px-6 text-slate-800">{row.luasSerangan}</td>
-                                        <td className="py-4 px-6 text-slate-800">{row.luasPuso}</td>
-                                        <td className="py-4 px-6 text-slate-800">{row.luasPenanganan}</td>
-                                        <td className="py-4 px-6 font-semibold text-slate-800">{row.jenisOPT}</td>
+                                    <tr
+                                        key={row.id}
+                                        className="hover:bg-slate-50/60 transition"
+                                    >
+                                        <td className="py-4 px-6 text-slate-800 font-semibold">
+                                            {row.bulan}
+                                        </td>
+                                        <td className="py-4 px-6 text-slate-600">
+                                            {row.tahun}
+                                        </td>
+                                        <td className="py-4 px-6 font-bold text-slate-900">
+                                            {row.desa}
+                                        </td>
+                                        <td className="py-4 px-6 text-slate-800">
+                                            {row.luasSerangan}
+                                        </td>
+                                        <td className="py-4 px-6 text-slate-800">
+                                            {row.luasPuso}
+                                        </td>
+                                        <td className="py-4 px-6 text-slate-800">
+                                            {row.luasPenanganan}
+                                        </td>
+                                        <td className="py-4 px-6 font-semibold text-slate-800">
+                                            {row.jenisOPT}
+                                        </td>
                                         <td className="py-4 px-6 text-center">
                                             <div className="flex items-center justify-center gap-2 text-slate-500">
                                                 <button className="p-1.5 hover:text-emerald-700 hover:bg-emerald-50 rounded-lg transition">
