@@ -1,86 +1,119 @@
-import { ChevronLeft, ChevronRight, Edit2, Trash2 } from "lucide-react";
-export default function DataSeranganTable({ data }) {
+import Pagination from "@/Components/Pagination";
+import { Pencil, Rows3Icon, Trash2 } from "lucide-react";
+
+const BULAN_NAMES = [
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember",
+];
+
+/**
+ * Tabel data serangan OPT dengan pagination.
+ * Kolom: # | Bulan | Tahun | Kecamatan | Musim Tanaman | Luas Serangan | Luas Puso | OPT | Aksi
+ */
+export default function DataSeranganTable({
+    rows = [],
+    paginator,
+    onEdit,
+    onDelete,
+}) {
     return (
         <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
             <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                     <thead>
                         <tr className="bg-slate-50/70 border-b border-slate-200 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
-                            <th className="py-4 px-6">BULAN</th>
-                            <th className="py-4 px-6">TAHUN</th>
-                            <th className="py-4 px-6">DESA</th>
-                            <th className="py-4 px-6">LUAS SERANGAN (HA)</th>
-                            <th className="py-4 px-6">LUAS PUSO (HA)</th>
-                            <th className="py-4 px-6">LUAS PENANGANAN (HA)</th>
-                            <th className="py-4 px-6">JENIS OPT</th>
-                            <th className="py-4 px-6 text-center">AKSI</th>
+                            <th className="py-4 px-5 w-10 text-center">#</th>
+                            <th className="py-4 px-5">Bulan</th>
+                            <th className="py-4 px-5">Tahun</th>
+                            <th className="py-4 px-5">Kecamatan</th>
+                            <th className="py-4 px-5">Musim Tanaman</th>
+                            <th className="py-4 px-5">Luas Serangan (HA)</th>
+                            <th className="py-4 px-5">Luas Puso (HA)</th>
+                            <th className="py-4 px-5">Jenis OPT</th>
+                            <th className="py-4 px-5 text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100 text-sm font-medium">
-                        {data.map((row) => (
-                            <tr
-                                key={row.id}
-                                className="hover:bg-slate-50/60 transition"
-                            >
-                                <td className="py-4 px-6 text-slate-800 font-semibold">
-                                    {row.bulan}
-                                </td>
-                                <td className="py-4 px-6 text-slate-600">
-                                    {row.tahun}
-                                </td>
-                                <td className="py-4 px-6 font-bold text-slate-900">
-                                    {row.desa}
-                                </td>
-                                <td className="py-4 px-6 text-slate-800">
-                                    {row.luasSerangan}
-                                </td>
-                                <td className="py-4 px-6 text-slate-800">
-                                    {row.luasPuso}
-                                </td>
-                                <td className="py-4 px-6 text-slate-800">
-                                    {row.luasPenanganan}
-                                </td>
-                                <td className="py-4 px-6 font-semibold text-slate-800">
-                                    {row.jenisOPT}
-                                </td>
-                                <td className="py-4 px-6 text-center">
-                                    <div className="flex items-center justify-center gap-2 text-slate-500">
-                                        <button className="p-1.5 hover:text-emerald-700 hover:bg-emerald-50 rounded-lg transition">
-                                            <Edit2 className="w-4 h-4" />
-                                        </button>
-                                        <button className="p-1.5 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition">
-                                            <Trash2 className="w-4 h-4" />
-                                        </button>
-                                    </div>
+                        {rows.length === 0 ? (
+                            <tr>
+                                <td
+                                    colSpan={9}
+                                    className="px-6 py-14 text-center text-slate-400 text-sm"
+                                >
+                                    Tidak ada data serangan ditemukan.
                                 </td>
                             </tr>
-                        ))}
+                        ) : (
+                            rows.map((row, idx) => (
+                                <tr
+                                    key={row.id}
+                                    className="hover:bg-slate-50/60 transition"
+                                >
+                                    <td className="py-4 px-5 text-center text-slate-400 font-medium">
+                                        {(paginator?.from ?? 1) + idx}
+                                    </td>
+                                    <td className="py-4 px-5 text-slate-800 font-semibold">
+                                        {BULAN_NAMES[row.bulan - 1] ??
+                                            row.bulan}
+                                    </td>
+                                    <td className="py-4 px-5 text-slate-600">
+                                        {row.tahun}
+                                    </td>
+                                    <td className="py-4 px-5 font-bold text-slate-900">
+                                        {row.kecamatan?.nama_kecamatan ?? "-"}
+                                    </td>
+                                    <td className="py-4 px-5 text-slate-700">
+                                        {row.musim_tanaman}
+                                    </td>
+                                    <td className="py-4 px-5 text-slate-800">
+                                        {row.jumlah_serangan}
+                                    </td>
+                                    <td className="py-4 px-5 text-slate-800">
+                                        {row.luas_puso}
+                                    </td>
+                                    <td className="py-4 px-5 font-semibold text-slate-800">
+                                        {row.opt?.nama_opt ?? "-"}
+                                    </td>
+                                    <td className="py-4 px-5 text-center">
+                                        <div className="flex justify-end gap-2">
+                                            <button
+                                                onClick={() =>
+                                                    onEdit(Rows3Icon)
+                                                }
+                                                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition"
+                                            >
+                                                <Pencil className="w-3.5 h-3.5" />{" "}
+                                                Edit
+                                            </button>
+                                            <button
+                                                onClick={() => onDelete(row)}
+                                                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-rose-600 bg-rose-50 hover:bg-rose-100 rounded-lg transition"
+                                            >
+                                                <Trash2 className="w-3.5 h-3.5" />{" "}
+                                                Hapus
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))
+                        )}
                     </tbody>
                 </table>
             </div>
 
-            {/* Pagination */}
-            <div className="p-4 bg-slate-50/60 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-semibold text-slate-600">
-                <span>Menampilkan 1-10 dari 480 data</span>
-                <div className="flex items-center gap-1.5">
-                    <button className="p-2 border border-slate-200 rounded-lg bg-white text-slate-400 hover:text-slate-600 transition">
-                        <ChevronLeft className="w-4 h-4" />
-                    </button>
-                    <button className="w-8 h-8 rounded-lg bg-[#006654] text-white font-bold flex items-center justify-center">
-                        1
-                    </button>
-                    <button className="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 flex items-center justify-center">
-                        2
-                    </button>
-                    <button className="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 flex items-center justify-center">
-                        3
-                    </button>
-                    <span className="px-1 text-slate-400">...</span>
-                    <button className="p-2 border border-slate-200 rounded-lg bg-white text-slate-700 hover:bg-slate-50 transition">
-                        <ChevronRight className="w-4 h-4" />
-                    </button>
-                </div>
-            </div>
+            {paginator && (
+                <Pagination paginator={paginator} routeName="data-serangan" />
+            )}
         </div>
     );
 }

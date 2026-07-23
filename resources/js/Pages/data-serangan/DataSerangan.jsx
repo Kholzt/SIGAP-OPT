@@ -1,29 +1,35 @@
+import React from "react";
 import { Head } from "@inertiajs/react";
-import AdminLayout from "../../Layouts/AdminLayout";
+import AdminLayout from "@/Layouts/AdminLayout";
+import { Bug, Check, FileSpreadsheet, FileText, Plus } from "lucide-react";
 
-import { FileSpreadsheet, FileText, Plus } from "lucide-react";
-import DataSeranganImportModal from "./components/DataSeranganImportModal";
-import DataSeranganTable from "./components/DataSeranganTable";
-import FilterDataSerangan from "./components/FilterDataSerangan";
-import SummaryCard from "./components/SummaryCard";
 import { useDataSerangan } from "@/hooks/useDataSerangan";
+import SummaryCard from "./components/SummaryCard";
+import FilterDataSerangan from "./components/FilterDataSerangan";
+import DataSeranganTable from "./components/DataSeranganTable";
+import DataSeranganForm from "./components/DataSeranganForm";
+import DataSeranganDeleteModal from "./components/DataSeranganDeleteModal";
+import DataSeranganImportModal from "./components/DataSeranganImportModal";
+import Alert from "@/Components/Alert";
 
-export default function DataSerangan({ allKecamatan, allOPT }) {
-    const {
-        selectedWilayah,
-        setSelectedWilayah,
-        selectedOPT,
-        setSelectedOPT,
-        isOpen,
-        setIsOpen,
-        data,
-    } = useDataSerangan();
+export default function DataSerangan({
+    allKecamatan,
+    allOPT,
+    dataSerangan,
+    filters,
+    flash,
+}) {
+    const ds = useDataSerangan(filters ?? {});
 
     return (
         <AdminLayout currentTab="Data Serangan OPT">
             <Head title="Data Serangan OPT" />
 
             <div className="space-y-6">
+                {/* Flash success */}
+                <Alert type="success" message={flash?.success} />
+                <Alert type="error" message={flash?.error} />
+
                 {/* Header & Actions */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
@@ -34,45 +40,87 @@ export default function DataSerangan({ allKecamatan, allOPT }) {
                                 Manajemen OPT
                             </span>
                         </nav>
+                        <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2 mt-1">
+                            <Bug className="w-6 h-6 text-emerald-500" />
+                            Data Serangan OPT
+                        </h1>
+                        <p className="text-sm text-slate-500 mt-1">
+                            Kelola histori data serangan Organisme Pengganggu
+                            Tumbuhan.
+                        </p>
                     </div>
 
                     <div className="flex flex-wrap items-center gap-2.5">
-                        <button className="flex items-center gap-2 bg-[#006654] text-white px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-[#005243] transition shadow-xs">
+                        <button
+                            onClick={ds.openCreate}
+                            className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition shadow-sm"
+                        >
                             <Plus className="w-4 h-4" /> Tambah Data
                         </button>
                         <button
-                            onClick={() => setIsOpen(true)}
-                            className="flex items-center gap-2 bg-white text-emerald-800 border border-emerald-700 px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-emerald-50 transition shadow-xs"
+                            onClick={ds.openImport}
+                            className="flex items-center gap-2 bg-white text-emerald-800 border border-emerald-700 px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-emerald-50 transition shadow-sm"
                         >
                             <FileSpreadsheet className="w-4 h-4" /> Import Excel
                         </button>
-                        <button className="flex items-center gap-2 bg-white text-emerald-800 border border-emerald-700 px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-emerald-50 transition shadow-xs">
+                        <button className="flex items-center gap-2 bg-white text-slate-700 border border-slate-200 px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-slate-50 transition shadow-sm">
                             <FileText className="w-4 h-4" /> Export PDF
                         </button>
                     </div>
                 </div>
 
-                {/* 3 Summary Cards */}
+                {/* Summary Cards */}
                 <SummaryCard />
 
-                {/* Filter Section */}
+                {/* Filter */}
                 <FilterDataSerangan
                     allKecamatan={allKecamatan}
                     allOPT={allOPT}
-                    setSelectedOPT={setSelectedOPT}
-                    setSelectedWilayah={setSelectedWilayah}
-                    selectedOPT={selectedOPT}
-                    selectedWilayah={selectedWilayah}
-                />
-
-                <DataSeranganImportModal
-                    isOpen={isOpen}
-                    onClose={() => setIsOpen(false)}
+                    selectedKecamatan={ds.selectedKecamatan}
+                    setSelectedKecamatan={ds.setSelectedKecamatan}
+                    selectedOPT={ds.selectedOPT}
+                    setSelectedOPT={ds.setSelectedOPT}
+                    searchValue={ds.searchValue}
+                    setSearchValue={ds.setSearchValue}
+                    onFilter={ds.handleFilter}
+                    onReset={ds.handleResetFilter}
                 />
 
                 {/* Data Table */}
-                <DataSeranganTable data={data} />
+                <DataSeranganTable
+                    rows={dataSerangan?.data ?? []}
+                    paginator={dataSerangan}
+                    onEdit={ds.openEdit}
+                    onDelete={ds.openDelete}
+                />
             </div>
+
+            {/* Modals */}
+            <DataSeranganForm
+                modalType={ds.modalType}
+                data={ds.data}
+                errors={ds.errors}
+                processing={ds.processing}
+                onChange={ds.setData}
+                onSubmit={
+                    ds.modalType === "create" ? ds.handleStore : ds.handleUpdate
+                }
+                onClose={ds.closeModal}
+                allKecamatan={allKecamatan}
+                allOPT={allOPT}
+                bulanOptions={ds.BULAN_OPTIONS}
+            />
+
+            <DataSeranganDeleteModal
+                selected={ds.modalType === "delete" ? ds.selected : null}
+                onConfirm={ds.handleDestroy}
+                onClose={ds.closeModal}
+            />
+
+            <DataSeranganImportModal
+                isOpen={ds.modalType === "import"}
+                onClose={ds.closeModal}
+            />
         </AdminLayout>
     );
 }

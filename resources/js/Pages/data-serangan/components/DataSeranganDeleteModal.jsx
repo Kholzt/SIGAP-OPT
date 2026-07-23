@@ -1,8 +1,14 @@
 import React from 'react';
 import { AlertTriangle } from 'lucide-react';
 
+/**
+ * Modal konfirmasi hapus data serangan.
+ */
 export default function DataSeranganDeleteModal({ selected, onConfirm, onClose }) {
     if (!selected) return null;
+
+    const bulanNames = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+    const bulanLabel = bulanNames[selected.bulan - 1] || selected.bulan;
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -11,15 +17,25 @@ export default function DataSeranganDeleteModal({ selected, onConfirm, onClose }
                 <div className="mx-auto w-14 h-14 rounded-full bg-rose-100 flex items-center justify-center mb-4">
                     <AlertTriangle className="w-7 h-7 text-rose-500" />
                 </div>
-                <h2 className="text-lg font-bold text-slate-900 mb-1">Hapus Data?</h2>
+                <h2 className="text-lg font-bold text-slate-900 mb-1">Hapus Data Serangan?</h2>
                 <p className="text-sm text-slate-500 mb-6">
-                    Data serangan bulan <span className="font-semibold text-slate-800">{selected.bulan} {selected.tahun}</span> akan dihapus permanen.
+                    Data serangan <span className="font-semibold text-slate-800">
+                        {bulanLabel} {selected.tahun}
+                    </span> — <span className="font-semibold text-slate-800">
+                        {selected.kecamatan?.nama_kecamatan}
+                    </span> akan dihapus permanen dan tidak dapat dikembalikan.
                 </p>
                 <div className="flex justify-center gap-3">
-                    <button onClick={onClose} className="px-5 py-2 text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition">
+                    <button
+                        onClick={onClose}
+                        className="px-5 py-2 text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition"
+                    >
                         Batal
                     </button>
-                    <button onClick={onConfirm} className="px-5 py-2 text-sm font-semibold text-white bg-rose-500 hover:bg-rose-600 rounded-xl transition">
+                    <button
+                        onClick={onConfirm}
+                        className="px-5 py-2 text-sm font-semibold text-white bg-rose-500 hover:bg-rose-600 rounded-xl transition"
+                    >
                         Ya, Hapus
                     </button>
                 </div>

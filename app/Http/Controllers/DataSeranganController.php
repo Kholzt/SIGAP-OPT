@@ -6,47 +6,74 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Services\KecamatanService;
 use App\Services\OPTService;
+use App\Services\DataSeranganService;
+use App\Http\Requests\StoreDataSeranganRequest;
+use App\Http\Requests\UpdateDataSeranganRequest;
+use App\Http\Requests\ImportDataSeranganRequest;
+use App\Models\HistoriSerangan;
+
 class DataSeranganController extends Controller
 {
-    
-    public function __construct(protected KecamatanService $kecamatanService,protected OPTService $optService) {}
-    public function index()
+    public function __construct(
+        protected KecamatanService $kecamatanService,
+        protected OPTService $optService,
+        protected DataSeranganService $dataSeranganService
+    ) {}
+
+    public function index(Request $request)
     {
-        $allKecamtan = $this->kecamatanService->getAllKecamatan();
-        $allOPT = $this->optService->getAllOPT();
+        $search      = $request->input('search', '');
+        $kecamatanId = $request->input('kecamatan_id');
+        $optId       = $request->input('opt_id');
+        $perPage     = $request->input('per_page', 10);
+
         return Inertia::render('data-serangan/DataSerangan', [
-            'allKecamatan' => $allKecamtan,
-            'allOPT' => $allOPT,
+            'allKecamatan' => $this->kecamatanService->getAllKecamatan(),
+            'allOPT'       => $this->optService->getAllOPT(),
+            'dataSerangan' => $this->dataSeranganService->getPaginatedDataSerangan(
+                $search, (int) $perPage, $kecamatanId, $optId, ["tahun" => "desc","bulan" => "desc"]
+            ),
+            'filters' => compact('search', 'kecamatanId', 'optId'),
+            'flash'   => ['success' => session('success'), 'error' => session('error')],
         ]);
     }
 
-    public function create()
+    public function store(StoreDataSeranganRequest $request)
     {
-        return response()->json(['message' => 'Create DataSerangan placeholder']);
+        $this->dataSeranganService->createDataSerangan($request->validated());
+
+        return redirect()->route('data-serangan')
+            ->with('success', 'Data serangan berhasil ditambahkan.');
     }
 
-    public function store(Request $request)
+    public function update(UpdateDataSeranganRequest $request, HistoriSerangan $data_serangan)
     {
-        return response()->json(['message' => 'Store DataSerangan placeholder', 'data' => $request->all()]);
+        $this->dataSeranganService->updateDataSerangan($data_serangan, $request->validated());
+
+        return redirect()->route('data-serangan')
+            ->with('success', 'Data serangan berhasil diperbarui.');
     }
 
-    public function show($id)
+    public function destroy(HistoriSerangan $data_serangan)
     {
-        return response()->json(['message' => "Show DataSerangan placeholder for id {$id}"]);
+        $this->dataSeranganService->deleteDataSerangan($data_serangan);
+
+        return redirect()->route('data-serangan')
+            ->with('success', 'Data serangan berhasil dihapus.');
     }
 
-    public function edit($id)
+    public function import(ImportDataSeranganRequest $request)
     {
-        return response()->json(['message' => "Edit DataSerangan placeholder for id {$id}"]);
-    }
+        $result = $this->dataSeranganService->importDataSerangan($request->file('file'));
+        $message = "Berhasil mengimpor {$result['imported']} data.";
+        $isSuccess = true;
 
-    public function update(Request $request, $id)
-    {
-        return response()->json(['message' => "Update DataSerangan placeholder for id {$id}", 'data' => $request->all()]);
-    }
+        if (!empty($result['errors'])) {
+            $isSuccess = false;
+            $message .= ' Beberapa baris gagal: ' . count($result['errors']) . ' baris. Silakan periksa file log untuk detailnya.';
+        }
 
-    public function destroy($id)
-    {
-        return response()->json(['message' => "Destroy DataSerangan placeholder for id {$id}"]);
+        return redirect()->route('data-serangan')
+            ->with($isSuccess ? 'success' : 'error', $message);
     }
 }

@@ -23,6 +23,7 @@ class OptController extends Controller
         return Inertia::render('opt/Index', [
             'opts'   => $opts,
             'search' => $search,
+            'flash'   => ['success' => session('success'), 'error' => session('error')],
         ]);
     }
 

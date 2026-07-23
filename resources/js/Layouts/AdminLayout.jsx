@@ -23,7 +23,7 @@ export default function AdminLayout({ children, currentTab = "Dashboard" }) {
         { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
         { name: "Data Serangan OPT", href: "/data-serangan", icon: Bug },
         { name: "Model Prediksi", href: "/model-prediksi", icon: TrendingUp },
-        { name: "Status Endemis", href: "/model-prediksi", icon: MapPin },
+        { name: "Status Endemis", href: "/status-endemis", icon: MapPin },
         { name: "Puncak Serangan", href: "/puncak-serangan", icon: BarChart3 },
         { name: "Data OPT", href: "/opt", icon: Database },
         { name: "Data Kecamatan", href: "/kecamatan", icon: Map },

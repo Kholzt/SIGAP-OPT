@@ -22,6 +22,7 @@ class KecamatanController extends Controller
         return Inertia::render('kecamatan/Index', [
             'kecamatans' => $kecamatans,
             'search'     => $search,
+            'flash'   => ['success' => session('success'), 'error' => session('error')],
         ]);
     }
 

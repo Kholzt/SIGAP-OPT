@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Services\OPTService;
+use App\Services\StatusEndemisService;
 class DashboardController extends Controller
 {
-    public function __construct(protected OPTService $optService) {}
+    public function __construct(protected OPTService $optService,protected StatusEndemisService $statusEndemisService) {}
     public function index()
     {
+        $this->statusEndemisService->kalkulateStatusEndemis();
         $countOPT = 0;
         return Inertia::render('dashboard/Dashboard', [
             'countOPT' => $countOPT

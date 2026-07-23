@@ -13,30 +13,31 @@ class KecamatanSeeder extends Seeder
     public function run(): void
     {
         $kecamatan = [
-                        'BINAKAL',
-                        'BONDOWOSO',
-                        'BOTOLINGO',
-                        'CERMEE',
-                        'CURAHDAMI',
-                        'GRUJUGAN',
-                        'JAMBESARI',
-                        'KLABANG',
-                        'MAESAN',
-                        'PAKEM',
-                        'PRAJEKAN',
-                        'PUJER',
-                        'SUKOSARI',
-                        'SUMBERWRINGIN',
-                        'TAMANAN',
-                        'TAMANKROCUT',
-                        'TAPEN',
-                        'TEGALAMPEL',
-                        'TENGGARANG',
-                        'TLOGOSARI',
-                        'WONOSARI',
-                        'WRINGIN'
-                    ];
-    foreach ($kecamatan as $nama_kecamatan) {
+            'BINAKAL',
+            'BONDOWOSO',
+            'BOTOLINGGO',
+            'CERMEE',
+            'CURAHDAMI',
+            'GRUJUGAN',
+            'JAMBESARIDS',
+            'KLABANG',
+            'MAESAN',
+            'PAKEM',
+            'PRAJEKAN',
+            'PUJER',
+            'SUKOSARI',
+            'SUMBERWRINGIN',
+            'TAMANAN',
+            'TAMANKROCOK',
+            'TAPEN',
+            'TEGALAMPEL',
+            'TENGGARANG',
+            'TLOGOSARI',
+            'WONOSARI',
+            'WRINGIN',
+        ];
+
+        foreach ($kecamatan as $nama_kecamatan) {
         \App\Models\Kecamatan::create([
             'nama_kecamatan' => $nama_kecamatan
         ]);
