@@ -9,7 +9,7 @@ class PublicMapController extends Controller
 {
     public function index()
     {
-        return Inertia::render('PublicMap');
+        return Inertia::render('landing/PublicMap');
     }
 
     public function create()

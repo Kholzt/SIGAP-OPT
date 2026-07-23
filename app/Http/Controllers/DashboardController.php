@@ -10,7 +10,7 @@ class DashboardController extends Controller
     public function __construct(protected OPTService $optService) {}
     public function index()
     {
-        $countOPT = $this->optService->getCountOPT();
+        $countOPT = 0;
         return Inertia::render('dashboard/Dashboard', [
             'countOPT' => $countOPT
         ]);

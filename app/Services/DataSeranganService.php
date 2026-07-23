@@ -1,10 +1,11 @@
 <?php
 namespace App\Services;
-// use App\Models\DataSerangan;
+use App\Models\HistoriSerangan;
 class DataSeranganService
 {
-    public function getDataSerangan()
+    public function getAllDataSerangan($orderBy = 'id', $direction = 'asc')
     {
-       
+        return HistoriSerangan::orderBy($orderBy, $direction)->get();
     }
+
 }

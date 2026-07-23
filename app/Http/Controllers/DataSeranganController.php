@@ -13,7 +13,7 @@ class DataSeranganController extends Controller
     public function index()
     {
         $allKecamtan = $this->kecamatanService->getAllKecamatan();
-        $allOPT = $this->optService->getAllOPTService();
+        $allOPT = $this->optService->getAllOPT();
         return Inertia::render('data-serangan/DataSerangan', [
             'allKecamatan' => $allKecamtan,
             'allOPT' => $allOPT,
