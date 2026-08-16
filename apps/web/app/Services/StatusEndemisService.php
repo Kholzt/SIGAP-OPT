@@ -6,12 +6,27 @@ use App\Models\HistoriSerangan;
 use App\Models\Kecamatan;
 use App\Models\OPT;
 use App\Models\StatusEndemis;
+use App\Services\OPTService;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class StatusEndemisService
 {
-    public function getMusimList($typeMusim = "MK"){
+    protected $optService;
+
+    public function __construct(OPTService $optService)
+    {
+        $this->optService = $optService;
+    }
+
+        
+    /**
+     * getMusimList
+     *
+     * @param  "MK"|"MP" $typeMusim
+     * @return array
+     */
+    public function getMusimList(?string $typeMusim = "MK"|"MP"){
         $isMk = $typeMusim == "MK";
         return StatusEndemis::select('musim_tanaman')
             ->when($isMk,function ($qr)  {
@@ -23,167 +38,163 @@ class StatusEndemisService
             ->distinct()
             ->pluck('musim_tanaman');
     }
+        
+    /**
+     * getAllStatusEndemis
+     *
+     * @param  mixed $order
+     * @param  mixed $where
+     * @return array
+     */
     public function getAllStatusEndemis(array $order = [],array $where = [])
     {
         return StatusEndemis::get();
     }
+    
+    /**
+     * calculateEndemicStatus
+     *
+     * @return void
+     */
+    public function calculateEndemicStatus(){
+        try {
+            DB::beginTransaction();
 
-    public function kalkulateStatusEndemis()
-    {
-        $year = date("y");
-        for ($i=0; $i <2 ; $i++) { 
-            $musimList = HistoriSerangan::select('musim_tanaman')
-            ->where('musim_tanaman', $i == 0 ?'like':'not like', '%/%')
-            ->whereNot("musim_tanaman","like","%$year%")
-            ->distinct()
-            ->orderBy('musim_tanaman', 'desc')
-            ->pluck('musim_tanaman')
-            ;
-            $lastMusim = $musimList->first();
-            if($i == 0) {
-                [$awal, $akhir] = explode('/', $lastMusim);
-                $nextMusim = ($awal + 1) . '/' . ($akhir + 1); // 21/22         }else{
-            }else{
-                $nextMusim = (string) ($lastMusim + 1); // 21
-            }
-        
-        $totalMusimCount = $musimList->count();
+            $currentYear = date("y");
 
-        if ($totalMusimCount === 0) {
-            return [];
-        }
+            $optList     = OPT::get("id");
+            $kecamatans  = Kecamatan::get("id");
 
-        $allKecamatan = Kecamatan::all();
-        if ($allKecamatan->isEmpty()) {
-            return [];
-        }
+            // Musim Kemarau   (MK)
+            // Musim Penghujan (MP)
+            $musims = ["MK","MP"];
+            $finalData = [];
+            foreach ($musims as $musim) {
+                $operator = $musim == "MK" ? "LIKE":"NOT LIKE";
+                $musimList = HistoriSerangan::select("musim_tanaman")
+                    ->where("musim_tanaman",$operator,"%/%")
+                    ->whereNot("musim_tanaman","like","%$currentYear%")
+                    ->distinct("musim_tanaman")
+                    ->orderBy("musim_tanaman","asc")
+                    ->pluck("musim_tanaman");
 
-        // Signature key based on dataset state
-        $cacheKey = 'status_endemis_calc_' . md5(
-            $nextMusim . '_' .
-            (HistoriSerangan::max('updated_at') ?? '') . '_' .
-            HistoriSerangan::count() . '_' .
-            OPT::count() . '_' .
-            $allKecamatan->count()
-        );
+                $totalMusim = $musimList->count();
 
-        if (Cache::has($cacheKey)) {
-            continue;
-        }
+                // Get histori serangan group by opt id kecamatan dan musim tanam
+                // Kemudian lakukan pengelompokan collection berdasarkan opt id
+                $seranganData = HistoriSerangan::
+                    select(["opt_id",
+                            "musim_tanaman",
+                            "kecamatan_id",
+                            DB::raw("SUM(jumlah_serangan) as total_serangan"),
+                            DB::raw("SUM(luas_puso) as total_puso")
+                    ])
+                    ->whereIn('musim_tanaman', $musimList)
+                    ->groupBy('opt_id', 'kecamatan_id', 'musim_tanaman')
+                    ->get()
+                    ->groupBy('opt_id');
+                
+                // Melakukan loop untuk masing-masing opt
+                foreach ($optList as $opt) {
+                    $optId                = $opt->id;
+                    $rataRataSeranganMap  = [];
+                    $rataRataPusoMap      = [];
+                    $rasioPusoMap         = [];
+                    $frekuensiSeranganMap = [];
 
-        $opts = OPT::all();
-        if ($opts->isEmpty()) {
-            return [];
-        }
+                    // Ambil data serangan berdasarkan opt id kemudian gabung berdasarkan kecamatan id
+                    $seranganPerOpt = $seranganData->has($optId) ? $seranganData->get($optId)->groupBy('kecamatan_id') : collect();
+                    // Melakukan loop untuk masing-masing kecamatan per 1 opt
+                    // Loop untuk melakukan sum dan menghitung nilai rata2 dan frekuensi indikator
+                    foreach ($kecamatans as $kecamatan) {
+                        $kecamatanId = $kecamatan->id;
 
-        // Single aggregated query for all OPTs, Kecamatans, and Musims
-        $seranganData = HistoriSerangan::selectRaw('opt_id,musim_tanaman, kecamatan_id, musim_tanaman, SUM(jumlah_serangan) as total_serangan, SUM(luas_puso) as total_luas_puso')
-            ->whereIn('musim_tanaman', $musimList)
-            ->groupBy('opt_id', 'kecamatan_id', 'musim_tanaman')
-            ->get()
-            ->groupBy('opt_id');
+                        // Definisi nilai indikator 
+                        // Default nilai 0 jika tidak terdapat data
+                        $tVal  = 0; // Nilai terkena  
+                        $pVal  = 0; // Nilai puso
+                        $prVal = 0; // Nilai rasio puso
+                        $fVal  = 0; // Nilai frekuensi serangan
+                        
+                        if($seranganPerOpt->has($kecamatanId)){
+                            $items = $seranganPerOpt->get($kecamatanId);
 
-        $now = now();
-        $calculatedData = [];
-        $result = [];
+                            // Melakukan penjumlahan seluruh data serangan berdasarkan kecamatan dan opt
+                            $sumSerangan = (float) $items->sum("total_serangan");
+                            $sumPuso     = (float) $items->sum("total_puso");
 
-        foreach ($opts as $valOpt) {
-            $optId = $valOpt->id;
-            $kecamatanGroups = $seranganData->has($optId) ? $seranganData->get($optId)->groupBy('kecamatan_id') : collect();
-
-            $rataRataSeranganMap = [];
-            $rataRataPusoMap = [];
-            $rasioPusoMap = [];
-            $frekuensiSeranganMap = [];
-
-            foreach ($allKecamatan as $kecamatan) {
-                $kecamatanId = $kecamatan->id;
-
-                if ($kecamatanGroups->has($kecamatanId)) {
-                    $items = $kecamatanGroups->get($kecamatanId);
-                    $sumSerangan = (float) $items->sum('total_serangan');
-                    $sumPuso = (float) $items->sum('total_luas_puso');
-
-                    $ktVal = $sumSerangan / $totalMusimCount;
-                    $kpVal = $sumPuso / $totalMusimCount;
-                    $krVal = $sumSerangan > 0 ? ($sumPuso / $sumSerangan) : 0;
-                    $kfVal = (float) $items->filter(fn($item) => $item->total_serangan > 0)->count();
-                } else {
-                    $ktVal = 0;
-                    $kpVal = 0;
-                    $krVal = 0;
-                    $kfVal = 0;
-                }
-
-                $rataRataSeranganMap[$kecamatanId] = $ktVal;
-                $rataRataPusoMap[$kecamatanId] = $kpVal;
-                $rasioPusoMap[$kecamatanId] = $krVal;
-                $frekuensiSeranganMap[$kecamatanId] = $kfVal;
-            }
-
-            $ktMax = !empty($rataRataSeranganMap) ? max($rataRataSeranganMap) : 0;
-            $kpMax = !empty($rataRataPusoMap) ? max($rataRataPusoMap) : 0;
-            $krMax = !empty($rasioPusoMap) ? max($rasioPusoMap) : 0;
-            $kfMax = !empty($frekuensiSeranganMap) ? max($frekuensiSeranganMap) : 0;
-
-            foreach ($allKecamatan as $kecamatan) {
-                $kecamatanId = $kecamatan->id;
-                $ktVal = $rataRataSeranganMap[$kecamatanId];
-
-                $ktClass = $this->clasificationIndicator($ktMax, $ktVal);
-                $kpClass = $this->clasificationIndicator($kpMax, $rataRataPusoMap[$kecamatanId]);
-                $krClass = $this->clasificationIndicator($krMax, $rasioPusoMap[$kecamatanId]);
-                $kfClass = $this->clasificationIndicator($kfMax, $frekuensiSeranganMap[$kecamatanId]);
-
-                $total = $ktClass + $kpClass + $krClass + $kfClass;
-                $status = $this->clasificationStatusEndemis($total);
-
-                $calculatedData[] = [
-                    'opt_id' => $optId,
-                    'kecamatan_id' => $kecamatanId,
-                    "musim_tanaman"=>$nextMusim,
-                    'status' => $status,
-                    'created_at' => $now,
-                    'updated_at' => $now,
-                ];
-
-                $result[] = [
-                    'opt_id' => $optId,
-                    'kecamatan_id' => $kecamatanId,
-                    'total_indicator' => $total,
-                    'status' => $status,
-                ];
-            }
-        }
-
-        if (!empty($calculatedData)) {
-            $existing = StatusEndemis::all()->keyBy(fn($item) => $item->opt_id . '_' . $item->kecamatan_id);
-
-            DB::transaction(function () use ($calculatedData, $existing) {
-                $toInsert = [];
-                foreach ($calculatedData as $data) {
-                    $key = $data['opt_id'] . '_' . $data['kecamatan_id'];
-                    if (isset($existing[$key])) {
-                        if ($existing[$key]->status !== $data['status']) {
-                            $existing[$key]->update(['status' => $data['status']]);
+                            // Melakukan perhitungan indikator berdasarkan standar LPHP
+                            $tVal = $sumSerangan / $totalMusim;
+                            $pVal = $sumPuso / $totalMusim;
+                            $prVal = $sumSerangan > 0 ? $sumPuso / $sumSerangan : 0 ;
+                            $fVal = (float) $items->filter(fn($item) => $item->total_serangan > 0)->count();
                         }
-                    } else {
-                        $toInsert[] = $data;
+
+                        // Simpan nilai indikator yang sudah dihitung berdasarkan kecamatan id
+                        $rataRataSeranganMap[$kecamatanId]  =  $tVal;
+                        $rataRataPusoMap[$kecamatanId]      =  $pVal;
+                        $rasioPusoMap[$kecamatanId]         =  $prVal;
+                        $frekuensiSeranganMap[$kecamatanId] =  $fVal;
+                    }
+
+                    // Mengambil nilai terbesar dari rata2 tiap indikator
+                    $maxKt = !empty($rataRataSeranganMap)   ? max($rataRataSeranganMap)  : 0;
+                    $maxKp = !empty($rataRataPusoMap)       ? max($rataRataPusoMap)      : 0;
+                    $maxKr = !empty($rasioPusoMap)          ? max($rasioPusoMap)         : 0;
+                    $maxKf = !empty($frekuensiSeranganMap)  ? max($frekuensiSeranganMap) : 0;
+                
+                    
+                    foreach ($kecamatans as $kecamatan) {
+                        $kecamatanId = $kecamatan->id;
+
+                        // Ambil nilai rata-rata tiap indikator
+                        $valKt = $rataRataSeranganMap[$kecamatanId];
+                        $valKp = $rataRataPusoMap[$kecamatanId];
+                        $valKr = $rasioPusoMap[$kecamatanId];
+                        $valKf = $frekuensiSeranganMap[$kecamatanId];
+                        
+                        // Melakukan klasifikasi kelas nilai rata-rata berdasarkan nilai max indikator
+                        $ktFinal = $this->clasificationIndicator($maxKt,$valKt); 
+                        $kpFinal = $this->clasificationIndicator($maxKp,$valKp); 
+                        $krFinal = $this->clasificationIndicator($maxKr,$valKr); 
+                        $kfFinal = $this->clasificationIndicator($maxKf,$valKf); 
+
+                        // 
+                        $total = $ktFinal + $kpFinal + $krFinal + $kfFinal;
+                        $status = $this->clasificationStatusEndemis($total);
+                        $nextMusim = $musim == "MK" ?"$currentYear/".($currentYear+1) :$currentYear;
+                         $finalData[] = [
+                            'opt_id'        => $optId,
+                            'kecamatan_id'  => $kecamatanId,
+                            "musim_tanaman" =>$nextMusim,
+                            'status'        => $status,
+                            'created_at'    => now(),
+                            'updated_at'    => now(),
+                        ];
                     }
                 }
-                if (!empty($toInsert)) {
-                    StatusEndemis::insert($toInsert);
-                }
-            });
-        }
+            }
 
-        Cache::put($cacheKey, true, 3600);
-        }
 
-        return $result;
+            StatusEndemis::upsert($finalData,["opt_id","kecamatan_id","musim_tanaman"],["status","updated_at"]);
+            DB::commit();
+            // return $result;
+        } catch (\Throwable $th) {
+            DB::rollback();
+            throw $th;
+        }
     }
-
-    private function clasificationIndicator($maxVal, $value)
+   
+         
+    /**
+     * clasificationIndicator
+     * Mengklasifikasikan indikator menjadi 1, 2, atau 3 berdasarkan nilai maksimum dan nilai saat ini
+     * untuk mendapatkan range kelas yang nantinya digunakan untuk nilai yang digunakan di perhitungan status endemis 
+     * @param  float $maxVal
+     * @param  float $value
+     * @return int
+     */
+    private function clasificationIndicator(float $maxVal,float $value):int
     {
         if ($maxVal == 0 || $value == 0) {
             return 0;
@@ -200,8 +211,15 @@ class StatusEndemisService
             return 0;
         }
     }
-
-    private function clasificationStatusEndemis($value)
+    
+    /**
+     * clasificationStatusEndemis
+     * Melakukan klasifikasi status endemis berdasarkan nilai klasifikasi kelas tiap indikator
+     * Terdapat 4 indikator dengan nilai maksimal 3, sehingga nilai maksimal status endemis 3*4 = 12
+     * @param  int $value
+     * @return string
+     */
+    private function clasificationStatusEndemis(int $value)
     {
         if ($value == 0) {
             return "Aman";

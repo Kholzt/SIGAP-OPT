@@ -20,7 +20,6 @@ class PublicMapController extends Controller
         $allOPT = $this->optService->getAllOPT();
         $musimList = $this->statusEndemisService->getMusimList();
         $statusRecords = $this->statusEndemisService->getAllStatusEndemis();
-
         // Build status matrix: [ kecamatan_id => [ opt_id => status ] ]
         $statusMatrix = [];
         foreach ($statusRecords as $rec) {

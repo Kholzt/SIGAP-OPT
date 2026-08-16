@@ -32,7 +32,7 @@ export default function StatusEndemisTable({
         link.setAttribute("href", encodedUri);
         link.setAttribute(
             "download",
-            `Status_Endemis_Bondowoso_${selectedMusim.replace("/", "_")}.csv`
+            `Status_Endemis_Bondowoso_${selectedMusim.replace("/", "_")}.csv`,
         );
         document.body.appendChild(link);
         link.click();
@@ -44,7 +44,7 @@ export default function StatusEndemisTable({
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                 <div>
                     <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-                        Klasifikasi Status Desa
+                        Klasifikasi Status Kecamatan
                     </h2>
                     <p className="text-sm font-medium text-slate-500 mt-0.5">
                         Data periode {selectedMusim}
@@ -66,7 +66,7 @@ export default function StatusEndemisTable({
                         <thead>
                             <tr className="bg-[#EBF1FB] border-b border-slate-200">
                                 <th className="py-4 px-6 text-xs font-bold text-slate-700 uppercase tracking-wider">
-                                    Nama Desa
+                                    Nama Kecamatan
                                 </th>
                                 {allOPT.map((o) => (
                                     <th
@@ -97,7 +97,9 @@ export default function StatusEndemisTable({
                                                     key={o.id}
                                                     className="py-4 px-4 text-center whitespace-nowrap"
                                                 >
-                                                    <StatusBadge status={status} />
+                                                    <StatusBadge
+                                                        status={status}
+                                                    />
                                                 </td>
                                             );
                                         })}

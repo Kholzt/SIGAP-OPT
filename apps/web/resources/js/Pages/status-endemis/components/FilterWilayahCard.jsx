@@ -29,7 +29,7 @@ export default function FilterWilayahCard({
                         onChange={(e) => setSelectedKecamatan(e.target.value)}
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-800 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-xs cursor-pointer"
                     >
-                        <option value="">Semua Desa / Kecamatan</option>
+                        <option value="">Semua Kecamatan</option>
                         {allKecamatan.map((k) => (
                             <option key={k.id} value={k.id}>
                                 {k.nama_kecamatan}

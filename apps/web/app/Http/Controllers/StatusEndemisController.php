@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\HistoriSerangan;
 use App\Models\Kecamatan;
-use App\Models\OPT;
-use App\Models\StatusEndemis;
 use App\Services\StatusEndemisService;
 use App\Services\DataSeranganService;
 use App\Services\OPTService;
@@ -18,6 +15,7 @@ class StatusEndemisController extends Controller
 
     public function index(Request $request)
     {
+        $this->statusEndemisService->calculateEndemicStatus();
         $allKecamatan = Kecamatan::orderBy('nama_kecamatan', 'asc')->get();
         $allOPT = $this->optService->getAllOPT();
         $musimList = $this->statusEndemisService->getMusimList();

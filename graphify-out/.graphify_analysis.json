@@ -1,0 +1,1178 @@
+{
+  "communities": {
+    "0": [
+      "apps_web_app_models_user",
+      "apps_web_app_models_user_user",
+      "apps_web_app_models_user_user_casts",
+      "apps_web_config_auth",
+      "apps_web_tests_feature_auth_authenticationtest",
+      "apps_web_tests_feature_auth_authenticationtest_authenticationtest",
+      "apps_web_tests_feature_auth_authenticationtest_authenticationtest_test_login_screen_can_be_rendered",
+      "apps_web_tests_feature_auth_authenticationtest_authenticationtest_test_users_can_authenticate_using_the_login_screen",
+      "apps_web_tests_feature_auth_authenticationtest_authenticationtest_test_users_can_logout",
+      "apps_web_tests_feature_auth_authenticationtest_authenticationtest_test_users_can_not_authenticate_with_invalid_password",
+      "apps_web_tests_feature_auth_emailverificationtest",
+      "apps_web_tests_feature_auth_emailverificationtest_emailverificationtest",
+      "apps_web_tests_feature_auth_emailverificationtest_emailverificationtest_test_email_can_be_verified",
+      "apps_web_tests_feature_auth_emailverificationtest_emailverificationtest_test_email_is_not_verified_with_invalid_hash",
+      "apps_web_tests_feature_auth_emailverificationtest_emailverificationtest_test_email_verification_screen_can_be_rendered",
+      "apps_web_tests_feature_auth_passwordconfirmationtest",
+      "apps_web_tests_feature_auth_passwordconfirmationtest_passwordconfirmationtest",
+      "apps_web_tests_feature_auth_passwordconfirmationtest_passwordconfirmationtest_test_confirm_password_screen_can_be_rendered",
+      "apps_web_tests_feature_auth_passwordconfirmationtest_passwordconfirmationtest_test_password_can_be_confirmed",
+      "apps_web_tests_feature_auth_passwordconfirmationtest_passwordconfirmationtest_test_password_is_not_confirmed_with_invalid_password",
+      "apps_web_tests_feature_auth_passwordresettest",
+      "apps_web_tests_feature_auth_passwordresettest_passwordresettest",
+      "apps_web_tests_feature_auth_passwordresettest_passwordresettest_test_password_can_be_reset_with_valid_token",
+      "apps_web_tests_feature_auth_passwordresettest_passwordresettest_test_reset_password_link_can_be_requested",
+      "apps_web_tests_feature_auth_passwordresettest_passwordresettest_test_reset_password_link_screen_can_be_rendered",
+      "apps_web_tests_feature_auth_passwordresettest_passwordresettest_test_reset_password_screen_can_be_rendered",
+      "apps_web_tests_feature_auth_passwordupdatetest",
+      "apps_web_tests_feature_auth_passwordupdatetest_passwordupdatetest",
+      "apps_web_tests_feature_auth_passwordupdatetest_passwordupdatetest_test_correct_password_must_be_provided_to_update_password",
+      "apps_web_tests_feature_auth_passwordupdatetest_passwordupdatetest_test_password_can_be_updated",
+      "apps_web_tests_feature_auth_registrationtest",
+      "apps_web_tests_feature_auth_registrationtest_registrationtest",
+      "apps_web_tests_feature_auth_registrationtest_registrationtest_test_new_users_can_register",
+      "apps_web_tests_feature_auth_registrationtest_registrationtest_test_registration_screen_can_be_rendered",
+      "apps_web_tests_feature_exampletest",
+      "apps_web_tests_feature_exampletest_exampletest",
+      "apps_web_tests_feature_exampletest_exampletest_test_the_application_returns_a_successful_response",
+      "apps_web_tests_feature_profiletest",
+      "apps_web_tests_feature_profiletest_profiletest",
+      "apps_web_tests_feature_profiletest_profiletest_test_correct_password_must_be_provided_to_delete_account",
+      "apps_web_tests_feature_profiletest_profiletest_test_email_verification_status_is_unchanged_when_the_email_address_is_unchanged",
+      "apps_web_tests_feature_profiletest_profiletest_test_profile_information_can_be_updated",
+      "apps_web_tests_feature_profiletest_profiletest_test_profile_page_is_displayed",
+      "apps_web_tests_feature_profiletest_profiletest_test_user_can_delete_their_account",
+      "apps_web_tests_testcase",
+      "apps_web_tests_testcase_testcase",
+      "illuminate_auth_events_verified",
+      "illuminate_auth_notifications_resetpassword",
+      "illuminate_database_eloquent_attributes_fillable",
+      "illuminate_database_eloquent_attributes_hidden",
+      "illuminate_database_eloquent_factories_hasfactory",
+      "illuminate_foundation_auth_user",
+      "illuminate_foundation_testing_refreshdatabase",
+      "illuminate_foundation_testing_testcase",
+      "illuminate_notifications_notifiable",
+      "illuminate_support_facades_event",
+      "illuminate_support_facades_notification",
+      "illuminate_support_facades_url"
+    ],
+    "1": [
+      "apps_web_resources_js_components_applicationlogo",
+      "apps_web_resources_js_components_applicationlogo_applicationlogo",
+      "apps_web_resources_js_components_checkbox",
+      "apps_web_resources_js_components_checkbox_checkbox",
+      "apps_web_resources_js_components_dangerbutton",
+      "apps_web_resources_js_components_dangerbutton_dangerbutton",
+      "apps_web_resources_js_components_dropdown",
+      "apps_web_resources_js_components_dropdown_content",
+      "apps_web_resources_js_components_dropdown_dropdown",
+      "apps_web_resources_js_components_dropdown_dropdowncontext",
+      "apps_web_resources_js_components_dropdown_dropdownlink",
+      "apps_web_resources_js_components_dropdown_trigger",
+      "apps_web_resources_js_components_inputerror",
+      "apps_web_resources_js_components_inputerror_inputerror",
+      "apps_web_resources_js_components_inputlabel",
+      "apps_web_resources_js_components_inputlabel_inputlabel",
+      "apps_web_resources_js_components_modal",
+      "apps_web_resources_js_components_modal_modal",
+      "apps_web_resources_js_components_navlink",
+      "apps_web_resources_js_components_navlink_navlink",
+      "apps_web_resources_js_components_primarybutton",
+      "apps_web_resources_js_components_primarybutton_primarybutton",
+      "apps_web_resources_js_components_responsivenavlink",
+      "apps_web_resources_js_components_responsivenavlink_responsivenavlink",
+      "apps_web_resources_js_components_secondarybutton",
+      "apps_web_resources_js_components_secondarybutton_secondarybutton",
+      "apps_web_resources_js_components_textinput",
+      "apps_web_resources_js_layouts_authenticatedlayout",
+      "apps_web_resources_js_layouts_authenticatedlayout_authenticatedlayout",
+      "apps_web_resources_js_layouts_guestlayout",
+      "apps_web_resources_js_layouts_guestlayout_guestlayout",
+      "apps_web_resources_js_pages_auth_confirmpassword",
+      "apps_web_resources_js_pages_auth_confirmpassword_confirmpassword",
+      "apps_web_resources_js_pages_auth_forgotpassword",
+      "apps_web_resources_js_pages_auth_forgotpassword_forgotpassword",
+      "apps_web_resources_js_pages_auth_login",
+      "apps_web_resources_js_pages_auth_login_login",
+      "apps_web_resources_js_pages_auth_register",
+      "apps_web_resources_js_pages_auth_register_register",
+      "apps_web_resources_js_pages_auth_resetpassword",
+      "apps_web_resources_js_pages_auth_resetpassword_resetpassword",
+      "apps_web_resources_js_pages_auth_verifyemail",
+      "apps_web_resources_js_pages_auth_verifyemail_verifyemail",
+      "apps_web_resources_js_pages_profile_edit",
+      "apps_web_resources_js_pages_profile_edit_edit",
+      "apps_web_resources_js_pages_profile_partials_deleteuserform",
+      "apps_web_resources_js_pages_profile_partials_deleteuserform_deleteuserform",
+      "apps_web_resources_js_pages_profile_partials_updatepasswordform",
+      "apps_web_resources_js_pages_profile_partials_updatepasswordform_updatepasswordform",
+      "apps_web_resources_js_pages_profile_partials_updateprofileinformationform",
+      "apps_web_resources_js_pages_profile_partials_updateprofileinformationform_updateprofileinformation"
+    ],
+    "2": [
+      "apps_web_resources_js_components_alert",
+      "apps_web_resources_js_components_alert_alert",
+      "apps_web_resources_js_components_pagination",
+      "apps_web_resources_js_components_pagination_pagination",
+      "apps_web_resources_js_hooks_usedataserangan",
+      "apps_web_resources_js_hooks_usedataserangan_bulan_options",
+      "apps_web_resources_js_hooks_usedataserangan_empty_form",
+      "apps_web_resources_js_hooks_usedataserangan_usedataserangan",
+      "apps_web_resources_js_hooks_usesearch",
+      "apps_web_resources_js_hooks_usesearch_usesearch",
+      "apps_web_resources_js_layouts_adminlayout",
+      "apps_web_resources_js_layouts_adminlayout_adminlayout",
+      "apps_web_resources_js_pages_dashboard_dashboard",
+      "apps_web_resources_js_pages_dashboard_dashboard_dashboard",
+      "apps_web_resources_js_pages_data_serangan_components_dataserangandeletemodal",
+      "apps_web_resources_js_pages_data_serangan_components_dataserangandeletemodal_dataserangandeletemodal",
+      "apps_web_resources_js_pages_data_serangan_components_dataseranganform",
+      "apps_web_resources_js_pages_data_serangan_components_dataseranganform_dataseranganform",
+      "apps_web_resources_js_pages_data_serangan_components_dataseranganimportmodal",
+      "apps_web_resources_js_pages_data_serangan_components_dataseranganimportmodal_dataseranganimportmodal",
+      "apps_web_resources_js_pages_data_serangan_components_dataserangantable",
+      "apps_web_resources_js_pages_data_serangan_components_dataserangantable_bulan_names",
+      "apps_web_resources_js_pages_data_serangan_components_dataserangantable_dataserangantable",
+      "apps_web_resources_js_pages_data_serangan_components_filterdataserangan",
+      "apps_web_resources_js_pages_data_serangan_components_filterdataserangan_filterdataserangan",
+      "apps_web_resources_js_pages_data_serangan_components_summarycard",
+      "apps_web_resources_js_pages_data_serangan_components_summarycard_summarycard",
+      "apps_web_resources_js_pages_data_serangan_dataserangan",
+      "apps_web_resources_js_pages_data_serangan_dataserangan_dataserangan",
+      "apps_web_resources_js_pages_kecamatan_components_kecamatandeletemodal",
+      "apps_web_resources_js_pages_kecamatan_components_kecamatandeletemodal_kecamatandeletemodal",
+      "apps_web_resources_js_pages_kecamatan_components_kecamatanform",
+      "apps_web_resources_js_pages_kecamatan_components_kecamatanform_kecamatanform",
+      "apps_web_resources_js_pages_kecamatan_components_kecamatantable",
+      "apps_web_resources_js_pages_kecamatan_components_kecamatantable_kecamatantable",
+      "apps_web_resources_js_pages_kecamatan_index",
+      "apps_web_resources_js_pages_kecamatan_index_index",
+      "apps_web_resources_js_pages_model_prediksi_modelprediksi",
+      "apps_web_resources_js_pages_model_prediksi_modelprediksi_modelprediksi",
+      "apps_web_resources_js_pages_opt_components_optdeletemodal",
+      "apps_web_resources_js_pages_opt_components_optdeletemodal_optdeletemodal",
+      "apps_web_resources_js_pages_opt_components_optform",
+      "apps_web_resources_js_pages_opt_components_optform_optform",
+      "apps_web_resources_js_pages_opt_components_opttable",
+      "apps_web_resources_js_pages_opt_components_opttable_opttable",
+      "apps_web_resources_js_pages_opt_index",
+      "apps_web_resources_js_pages_opt_index_index",
+      "apps_web_resources_js_pages_puncak_serangan_puncakserangan",
+      "apps_web_resources_js_pages_puncak_serangan_puncakserangan_puncakserangan"
+    ],
+    "3": [
+      "apps_web_app_http_controllers_dataserangancontroller_dataserangancontroller_import",
+      "apps_web_app_http_controllers_dataserangancontroller_dataserangancontroller_store",
+      "apps_web_app_http_controllers_dataserangancontroller_dataserangancontroller_update",
+      "apps_web_app_http_controllers_optcontroller_optcontroller_store",
+      "apps_web_app_http_controllers_optcontroller_optcontroller_update",
+      "apps_web_app_http_requests_auth_loginrequest",
+      "apps_web_app_http_requests_auth_loginrequest_loginrequest",
+      "apps_web_app_http_requests_auth_loginrequest_loginrequest_authenticate",
+      "apps_web_app_http_requests_auth_loginrequest_loginrequest_authorize",
+      "apps_web_app_http_requests_auth_loginrequest_loginrequest_ensureisnotratelimited",
+      "apps_web_app_http_requests_auth_loginrequest_loginrequest_rules",
+      "apps_web_app_http_requests_auth_loginrequest_loginrequest_throttlekey",
+      "apps_web_app_http_requests_importdataseranganrequest",
+      "apps_web_app_http_requests_importdataseranganrequest_importdataseranganrequest",
+      "apps_web_app_http_requests_importdataseranganrequest_importdataseranganrequest_attributes",
+      "apps_web_app_http_requests_importdataseranganrequest_importdataseranganrequest_authorize",
+      "apps_web_app_http_requests_importdataseranganrequest_importdataseranganrequest_rules",
+      "apps_web_app_http_requests_profileupdaterequest",
+      "apps_web_app_http_requests_storedataseranganrequest",
+      "apps_web_app_http_requests_storedataseranganrequest_storedataseranganrequest",
+      "apps_web_app_http_requests_storedataseranganrequest_storedataseranganrequest_attributes",
+      "apps_web_app_http_requests_storedataseranganrequest_storedataseranganrequest_authorize",
+      "apps_web_app_http_requests_storedataseranganrequest_storedataseranganrequest_rules",
+      "apps_web_app_http_requests_storekecamatanrequest",
+      "apps_web_app_http_requests_storekecamatanrequest_storekecamatanrequest",
+      "apps_web_app_http_requests_storekecamatanrequest_storekecamatanrequest_authorize",
+      "apps_web_app_http_requests_storekecamatanrequest_storekecamatanrequest_messages",
+      "apps_web_app_http_requests_storekecamatanrequest_storekecamatanrequest_rules",
+      "apps_web_app_http_requests_storeoptrequest",
+      "apps_web_app_http_requests_storeoptrequest_storeoptrequest",
+      "apps_web_app_http_requests_storeoptrequest_storeoptrequest_authorize",
+      "apps_web_app_http_requests_storeoptrequest_storeoptrequest_messages",
+      "apps_web_app_http_requests_storeoptrequest_storeoptrequest_rules",
+      "apps_web_app_http_requests_updatedataseranganrequest",
+      "apps_web_app_http_requests_updatedataseranganrequest_updatedataseranganrequest",
+      "apps_web_app_http_requests_updatedataseranganrequest_updatedataseranganrequest_attributes",
+      "apps_web_app_http_requests_updatedataseranganrequest_updatedataseranganrequest_authorize",
+      "apps_web_app_http_requests_updatedataseranganrequest_updatedataseranganrequest_rules",
+      "apps_web_app_http_requests_updateoptrequest",
+      "apps_web_app_http_requests_updateoptrequest_updateoptrequest",
+      "apps_web_app_http_requests_updateoptrequest_updateoptrequest_authorize",
+      "apps_web_app_http_requests_updateoptrequest_updateoptrequest_messages",
+      "apps_web_app_http_requests_updateoptrequest_updateoptrequest_rules",
+      "illuminate_auth_events_lockout",
+      "illuminate_contracts_validation_validationrule",
+      "illuminate_foundation_http_formrequest",
+      "illuminate_support_facades_ratelimiter",
+      "illuminate_validation_rule"
+    ],
+    "4": [
+      "apps_web_composer",
+      "apps_web_composer_allow_plugins_pestphp_pest_plugin",
+      "apps_web_composer_allow_plugins_php_http_discovery",
+      "apps_web_composer_autoload",
+      "apps_web_composer_autoload_dev",
+      "apps_web_composer_autoload_dev_psr_4",
+      "apps_web_composer_autoload_psr_4",
+      "apps_web_composer_config",
+      "apps_web_composer_config_allow_plugins",
+      "apps_web_composer_config_optimize_autoloader",
+      "apps_web_composer_config_preferred_install",
+      "apps_web_composer_config_sort_packages",
+      "apps_web_composer_description",
+      "apps_web_composer_extra",
+      "apps_web_composer_extra_laravel",
+      "apps_web_composer_keywords",
+      "apps_web_composer_laravel_dont_discover",
+      "apps_web_composer_license",
+      "apps_web_composer_minimum_stability",
+      "apps_web_composer_name",
+      "apps_web_composer_prefer_stable",
+      "apps_web_composer_psr_4_app",
+      "apps_web_composer_psr_4_database_factories",
+      "apps_web_composer_psr_4_database_seeders",
+      "apps_web_composer_psr_4_tests",
+      "apps_web_composer_require",
+      "apps_web_composer_require_dev",
+      "apps_web_composer_require_dev_fakerphp_faker",
+      "apps_web_composer_require_dev_laravel_pail",
+      "apps_web_composer_require_dev_laravel_pao",
+      "apps_web_composer_require_dev_laravel_pint",
+      "apps_web_composer_require_dev_mockery_mockery",
+      "apps_web_composer_require_dev_nunomaduro_collision",
+      "apps_web_composer_require_dev_phpunit_phpunit",
+      "apps_web_composer_require_inertiajs_inertia_laravel",
+      "apps_web_composer_require_laravel_framework",
+      "apps_web_composer_require_laravel_sanctum",
+      "apps_web_composer_require_laravel_tinker",
+      "apps_web_composer_require_maatwebsite_excel",
+      "apps_web_composer_require_php",
+      "apps_web_composer_require_tightenco_ziggy",
+      "apps_web_composer_schema",
+      "apps_web_composer_type",
+      "ref_framework",
+      "ref_laravel"
+    ],
+    "5": [
+      "any",
+      "apps_ml_app_config_db",
+      "apps_ml_app_config_db_get_db",
+      "apps_ml_app_config_db_rationale_50",
+      "apps_ml_app_config_db_test_db_connection",
+      "apps_ml_app_config_init",
+      "apps_ml_app_src_services_init",
+      "apps_ml_app_src_services_opt_service",
+      "apps_ml_app_src_services_opt_service_optservice",
+      "apps_ml_app_src_services_opt_service_optservice_build_query",
+      "apps_ml_app_src_services_opt_service_optservice_count_histori_serangan",
+      "apps_ml_app_src_services_opt_service_optservice_get_by_kecamatan",
+      "apps_ml_app_src_services_opt_service_optservice_get_by_opt_id",
+      "apps_ml_app_src_services_opt_service_optservice_get_distinct_musim_tanaman",
+      "apps_ml_app_src_services_opt_service_optservice_get_histori_serangan",
+      "apps_ml_app_src_services_opt_service_optservice_get_kecamatan_list",
+      "apps_ml_app_src_services_opt_service_optservice_get_opt_list",
+      "apps_ml_app_src_services_opt_service_optservice_get_year_range",
+      "apps_ml_app_src_services_opt_service_optservice_init",
+      "apps_ml_app_src_services_opt_service_rationale_198",
+      "apps_ml_app_src_services_opt_service_rationale_203",
+      "apps_ml_app_src_services_opt_service_rationale_208",
+      "apps_ml_app_src_services_opt_service_rationale_214",
+      "apps_ml_app_src_services_opt_service_rationale_9",
+      "apps_ml_main",
+      "apps_ml_main_get_histori",
+      "apps_ml_main_get_kecamatan",
+      "apps_ml_main_get_opt",
+      "apps_ml_main_get_summary",
+      "apps_ml_main_health_check",
+      "apps_ml_main_rationale_102",
+      "apps_ml_main_rationale_109",
+      "apps_ml_main_rationale_30",
+      "apps_ml_main_rationale_41",
+      "apps_ml_main_rationale_64",
+      "apps_ml_main_rationale_95",
+      "apps_ml_main_root",
+      "apps_ml_test",
+      "get",
+      "session"
+    ],
+    "6": [
+      "apps_web_package",
+      "apps_web_package_dependencies",
+      "apps_web_package_dependencies_chart_js",
+      "apps_web_package_dependencies_inertiajs_react",
+      "apps_web_package_dependencies_leaflet",
+      "apps_web_package_dependencies_lucide_react",
+      "apps_web_package_dependencies_react",
+      "apps_web_package_dependencies_react_chartjs_2",
+      "apps_web_package_dependencies_react_dom",
+      "apps_web_package_dependencies_react_leaflet",
+      "apps_web_package_devdependencies",
+      "apps_web_package_devdependencies_concurrently",
+      "apps_web_package_devdependencies_headlessui_react",
+      "apps_web_package_devdependencies_laravel_vite_plugin",
+      "apps_web_package_devdependencies_tailwindcss",
+      "apps_web_package_devdependencies_tailwindcss_vite",
+      "apps_web_package_devdependencies_vite",
+      "apps_web_package_devdependencies_vitejs_plugin_react",
+      "apps_web_package_json_leaflet",
+      "apps_web_package_json_react_leaflet",
+      "apps_web_package_json_tailwindcss",
+      "apps_web_package_private",
+      "apps_web_package_schema",
+      "apps_web_package_scripts",
+      "apps_web_package_scripts_build",
+      "apps_web_package_scripts_dev",
+      "apps_web_package_type",
+      "chart_js",
+      "concurrently",
+      "headlessui_react",
+      "inertiajs_react",
+      "laravel_vite_plugin",
+      "lucide_react",
+      "react",
+      "react_chartjs_2",
+      "react_dom",
+      "tailwindcss_vite",
+      "vite",
+      "vitejs_plugin_react"
+    ],
+    "7": [
+      "apps_web_composer_scripts",
+      "apps_web_composer_scripts_dev",
+      "apps_web_composer_scripts_post_autoload_dump",
+      "apps_web_composer_scripts_post_create_project_cmd",
+      "apps_web_composer_scripts_post_root_package_install",
+      "apps_web_composer_scripts_post_update_cmd",
+      "apps_web_composer_scripts_pre_package_uninstall",
+      "apps_web_composer_scripts_setup",
+      "apps_web_composer_scripts_test",
+      "ref_composer_config_disableprocesstimeout",
+      "ref_composer_install",
+      "ref_illuminate_foundation_composerscripts_postautoloaddump",
+      "ref_illuminate_foundation_composerscripts_prepackageuninstall",
+      "ref_npm_install_ignore_scripts",
+      "ref_npm_run_build",
+      "ref_npx_concurrently_c_93c5fd_c4b5fd_fb7185_fdba74_php_artisan_serve_php_artisan_queue_listen_tries_1_timeout_0_php_artisan_pail_timeout_0_npm_run_dev_names_server_queue_logs_vite_kill_others",
+      "ref_php_artisan_config_clear_ansi_no_additional_args",
+      "ref_php_artisan_key_generate",
+      "ref_php_artisan_key_generate_ansi",
+      "ref_php_artisan_migrate_force",
+      "ref_php_artisan_migrate_graceful_ansi",
+      "ref_php_artisan_package_discover_ansi",
+      "ref_php_artisan_test",
+      "ref_php_artisan_vendor_publish_tag_laravel_assets_ansi_force",
+      "ref_php_r_file_exists_database_database_sqlite_touch_database_database_sqlite",
+      "ref_php_r_file_exists_env_copy_env_example_env"
+    ],
+    "8": [
+      "apps_web_database_migrations_0001_01_01_000000_create_users_table",
+      "apps_web_database_migrations_0001_01_01_000000_create_users_table_down",
+      "apps_web_database_migrations_0001_01_01_000000_create_users_table_up",
+      "apps_web_database_migrations_0001_01_01_000001_create_cache_table",
+      "apps_web_database_migrations_0001_01_01_000001_create_cache_table_down",
+      "apps_web_database_migrations_0001_01_01_000001_create_cache_table_up",
+      "apps_web_database_migrations_0001_01_01_000002_create_jobs_table",
+      "apps_web_database_migrations_0001_01_01_000002_create_jobs_table_down",
+      "apps_web_database_migrations_0001_01_01_000002_create_jobs_table_up",
+      "apps_web_database_migrations_2026_07_22_115030_create_kecamatans_table",
+      "apps_web_database_migrations_2026_07_22_115030_create_kecamatans_table_down",
+      "apps_web_database_migrations_2026_07_22_115030_create_kecamatans_table_up",
+      "apps_web_database_migrations_2026_07_22_124338_create_opts_table",
+      "apps_web_database_migrations_2026_07_22_124338_create_opts_table_down",
+      "apps_web_database_migrations_2026_07_22_124338_create_opts_table_up",
+      "apps_web_database_migrations_2026_07_23_073443_create_histori_serangans_table",
+      "apps_web_database_migrations_2026_07_23_073443_create_histori_serangans_table_down",
+      "apps_web_database_migrations_2026_07_23_073443_create_histori_serangans_table_up",
+      "apps_web_database_migrations_2026_07_23_154726_create_status_endemis_table",
+      "apps_web_database_migrations_2026_07_23_154726_create_status_endemis_table_down",
+      "apps_web_database_migrations_2026_07_23_154726_create_status_endemis_table_up",
+      "illuminate_database_migrations_migration",
+      "illuminate_database_schema_blueprint",
+      "illuminate_support_facades_schema"
+    ],
+    "9": [
+      "apps_web_app_http_controllers_dataserangancontroller",
+      "apps_web_app_http_controllers_dataserangancontroller_dataserangancontroller",
+      "apps_web_app_http_controllers_dataserangancontroller_dataserangancontroller_construct",
+      "apps_web_app_http_controllers_dataserangancontroller_dataserangancontroller_destroy",
+      "apps_web_app_http_controllers_dataserangancontroller_dataserangancontroller_index",
+      "apps_web_app_http_controllers_publicmapcontroller",
+      "apps_web_app_models_historiserangan",
+      "apps_web_app_models_historiserangan_historiserangan",
+      "apps_web_app_models_historiserangan_historiserangan_kecamatan",
+      "apps_web_app_models_historiserangan_historiserangan_opt",
+      "apps_web_app_services_dataseranganservice",
+      "apps_web_app_services_dataseranganservice_dataseranganservice",
+      "apps_web_app_services_dataseranganservice_dataseranganservice_createdataserangan",
+      "apps_web_app_services_dataseranganservice_dataseranganservice_deletedataserangan",
+      "apps_web_app_services_dataseranganservice_dataseranganservice_getmusimlist",
+      "apps_web_app_services_dataseranganservice_dataseranganservice_getpaginateddataserangan",
+      "apps_web_app_services_dataseranganservice_dataseranganservice_importdataserangan",
+      "apps_web_app_services_dataseranganservice_dataseranganservice_updatedataserangan",
+      "illuminate_database_eloquent_relations_belongsto",
+      "illuminate_http_uploadedfile",
+      "illuminate_support_facades_db",
+      "maatwebsite_excel_facades_excel"
+    ],
+    "10": [
+      "apps_web_resources_js_components_statusbadge",
+      "apps_web_resources_js_components_statusbadge_getstatuscolor",
+      "apps_web_resources_js_components_statusbadge_statusbadge",
+      "apps_web_resources_js_components_statusendemismap",
+      "apps_web_resources_js_components_statusendemismap_centercoords",
+      "apps_web_resources_js_components_statusendemismap_normalizename",
+      "apps_web_resources_js_components_statusendemismap_statusendemismap",
+      "apps_web_resources_js_components_statusendemismap_statusendemismap_mapactionhandler",
+      "apps_web_resources_js_pages_landing_components_header",
+      "apps_web_resources_js_pages_landing_components_header_header",
+      "apps_web_resources_js_pages_landing_components_statusendemismaplanding",
+      "apps_web_resources_js_pages_landing_components_statusendemismaplanding_statusendemismaplanding",
+      "apps_web_resources_js_pages_landing_landing",
+      "apps_web_resources_js_pages_landing_landing_landing",
+      "apps_web_resources_js_pages_status_endemis_components_filterwilayahcard",
+      "apps_web_resources_js_pages_status_endemis_components_filterwilayahcard_filterwilayahcard",
+      "apps_web_resources_js_pages_status_endemis_components_legendastatuscard",
+      "apps_web_resources_js_pages_status_endemis_components_legendastatuscard_legendastatuscard",
+      "apps_web_resources_js_pages_status_endemis_components_statusendemistable",
+      "apps_web_resources_js_pages_status_endemis_components_statusendemistable_statusendemistable",
+      "apps_web_resources_js_pages_status_endemis_statusendemis",
+      "apps_web_resources_js_pages_status_endemis_statusendemis_statusendemis"
+    ],
+    "11": [
+      "apps_web_app_http_controllers_kecamatancontroller",
+      "apps_web_app_http_controllers_kecamatancontroller_kecamatancontroller",
+      "apps_web_app_http_controllers_kecamatancontroller_kecamatancontroller_construct",
+      "apps_web_app_http_controllers_kecamatancontroller_kecamatancontroller_destroy",
+      "apps_web_app_http_controllers_kecamatancontroller_kecamatancontroller_index",
+      "apps_web_app_http_controllers_kecamatancontroller_kecamatancontroller_store",
+      "apps_web_app_http_controllers_kecamatancontroller_kecamatancontroller_update",
+      "apps_web_app_http_requests_updatekecamatanrequest",
+      "apps_web_app_http_requests_updatekecamatanrequest_updatekecamatanrequest",
+      "apps_web_app_http_requests_updatekecamatanrequest_updatekecamatanrequest_authorize",
+      "apps_web_app_http_requests_updatekecamatanrequest_updatekecamatanrequest_messages",
+      "apps_web_app_http_requests_updatekecamatanrequest_updatekecamatanrequest_rules",
+      "apps_web_app_models_kecamatan_kecamatan",
+      "apps_web_app_services_kecamatanservice",
+      "apps_web_app_services_kecamatanservice_kecamatanservice",
+      "apps_web_app_services_kecamatanservice_kecamatanservice_createkecamatan",
+      "apps_web_app_services_kecamatanservice_kecamatanservice_deletekecamatan",
+      "apps_web_app_services_kecamatanservice_kecamatanservice_getallkecamatan",
+      "apps_web_app_services_kecamatanservice_kecamatanservice_getpaginatedkecamatan",
+      "apps_web_app_services_kecamatanservice_kecamatanservice_updatekecamatan"
+    ],
+    "12": [
+      "apps_web_app_http_controllers_auth_authenticatedsessioncontroller_authenticatedsessioncontroller",
+      "apps_web_app_http_controllers_auth_authenticatedsessioncontroller_authenticatedsessioncontroller_create",
+      "apps_web_app_http_controllers_auth_authenticatedsessioncontroller_authenticatedsessioncontroller_destroy",
+      "apps_web_app_http_controllers_auth_authenticatedsessioncontroller_authenticatedsessioncontroller_store",
+      "apps_web_app_http_controllers_auth_emailverificationnotificationcontroller",
+      "apps_web_app_http_controllers_auth_emailverificationnotificationcontroller_emailverificationnotificationcontroller",
+      "apps_web_app_http_controllers_auth_emailverificationnotificationcontroller_emailverificationnotificationcontroller_store",
+      "apps_web_app_http_controllers_auth_passwordcontroller",
+      "apps_web_app_http_controllers_auth_passwordcontroller_passwordcontroller",
+      "apps_web_app_http_controllers_auth_passwordcontroller_passwordcontroller_update",
+      "apps_web_app_http_controllers_auth_verifyemailcontroller",
+      "apps_web_app_http_controllers_auth_verifyemailcontroller_verifyemailcontroller",
+      "apps_web_app_http_controllers_auth_verifyemailcontroller_verifyemailcontroller_invoke",
+      "apps_web_app_http_controllers_controller",
+      "apps_web_app_http_controllers_controller_controller",
+      "illuminate_foundation_auth_emailverificationrequest",
+      "illuminate_http_redirectresponse",
+      "illuminate_support_facades_hash",
+      "illuminate_validation_rules_password"
+    ],
+    "13": [
+      "apps_ml_app_src_models_init",
+      "apps_ml_app_src_models_opt_models",
+      "apps_ml_app_src_models_opt_models_historiserangan",
+      "apps_ml_app_src_models_opt_models_historiserangan_to_dict",
+      "apps_ml_app_src_models_opt_models_kecamatan",
+      "apps_ml_app_src_models_opt_models_kecamatan_to_dict",
+      "apps_ml_app_src_models_opt_models_modelmetadata",
+      "apps_ml_app_src_models_opt_models_modelmetadata_to_dict",
+      "apps_ml_app_src_models_opt_models_opt",
+      "apps_ml_app_src_models_opt_models_opt_to_dict",
+      "apps_ml_app_src_models_opt_models_rationale_114",
+      "apps_ml_app_src_models_opt_models_rationale_13",
+      "apps_ml_app_src_models_opt_models_rationale_34",
+      "apps_ml_app_src_models_opt_models_rationale_55",
+      "apps_ml_app_src_models_opt_models_rationale_89",
+      "apps_ml_app_src_models_opt_models_statusendemis",
+      "apps_ml_app_src_models_opt_models_statusendemis_to_dict",
+      "base"
+    ],
+    "14": [
+      "apps_web_app_http_controllers_optcontroller",
+      "apps_web_app_http_controllers_optcontroller_optcontroller",
+      "apps_web_app_http_controllers_optcontroller_optcontroller_construct",
+      "apps_web_app_http_controllers_optcontroller_optcontroller_destroy",
+      "apps_web_app_http_controllers_optcontroller_optcontroller_index",
+      "apps_web_app_http_controllers_statusendemiscontroller",
+      "apps_web_app_http_controllers_statusendemiscontroller_statusendemiscontroller",
+      "apps_web_app_http_controllers_statusendemiscontroller_statusendemiscontroller_construct",
+      "apps_web_app_http_controllers_statusendemiscontroller_statusendemiscontroller_index",
+      "apps_web_app_models_opt_opt",
+      "apps_web_app_services_optservice",
+      "apps_web_app_services_optservice_optservice",
+      "apps_web_app_services_optservice_optservice_createopt",
+      "apps_web_app_services_optservice_optservice_deleteopt",
+      "apps_web_app_services_optservice_optservice_getallopt",
+      "apps_web_app_services_optservice_optservice_getpaginatedopt",
+      "apps_web_app_services_optservice_optservice_updateopt",
+      "apps_web_routes_web"
+    ],
+    "15": [
+      "apps_web_app_http_controllers_auth_authenticatedsessioncontroller",
+      "apps_web_app_http_controllers_auth_confirmablepasswordcontroller",
+      "apps_web_app_http_controllers_auth_newpasswordcontroller",
+      "apps_web_app_http_controllers_auth_passwordresetlinkcontroller",
+      "apps_web_app_http_controllers_auth_registeredusercontroller",
+      "apps_web_app_http_controllers_dashboardcontroller",
+      "apps_web_app_http_controllers_modelprediksicontroller",
+      "apps_web_app_http_controllers_puncakserangancontroller",
+      "illuminate_auth_events_passwordreset",
+      "illuminate_auth_events_registered",
+      "illuminate_support_facades_auth",
+      "illuminate_support_facades_password",
+      "illuminate_validation_rules",
+      "illuminate_validation_validationexception",
+      "inertia_inertia"
+    ],
+    "16": [
+      "apps_web_app_http_controllers_auth_confirmablepasswordcontroller_confirmablepasswordcontroller",
+      "apps_web_app_http_controllers_auth_confirmablepasswordcontroller_confirmablepasswordcontroller_show",
+      "apps_web_app_http_controllers_auth_confirmablepasswordcontroller_confirmablepasswordcontroller_store",
+      "apps_web_app_http_controllers_auth_emailverificationpromptcontroller",
+      "apps_web_app_http_controllers_auth_emailverificationpromptcontroller_emailverificationpromptcontroller",
+      "apps_web_app_http_controllers_auth_emailverificationpromptcontroller_emailverificationpromptcontroller_invoke",
+      "apps_web_app_http_controllers_auth_passwordresetlinkcontroller_passwordresetlinkcontroller",
+      "apps_web_app_http_controllers_auth_passwordresetlinkcontroller_passwordresetlinkcontroller_create",
+      "apps_web_app_http_controllers_auth_passwordresetlinkcontroller_passwordresetlinkcontroller_store",
+      "apps_web_app_http_controllers_auth_registeredusercontroller_registeredusercontroller",
+      "apps_web_app_http_controllers_auth_registeredusercontroller_registeredusercontroller_create",
+      "apps_web_app_http_controllers_auth_registeredusercontroller_registeredusercontroller_store",
+      "apps_web_routes_auth",
+      "illuminate_support_facades_route",
+      "inertia_response"
+    ],
+    "17": [
+      "apps_web_app_http_controllers_auth_newpasswordcontroller_newpasswordcontroller",
+      "apps_web_app_http_controllers_auth_newpasswordcontroller_newpasswordcontroller_create",
+      "apps_web_app_http_controllers_auth_newpasswordcontroller_newpasswordcontroller_store",
+      "apps_web_app_http_middleware_handleinertiarequests",
+      "apps_web_app_http_middleware_handleinertiarequests_handleinertiarequests",
+      "apps_web_app_http_middleware_handleinertiarequests_handleinertiarequests_share",
+      "apps_web_app_http_middleware_handleinertiarequests_handleinertiarequests_version",
+      "apps_web_bootstrap_app",
+      "apps_web_public_index",
+      "illuminate_foundation_application",
+      "illuminate_foundation_configuration_exceptions",
+      "illuminate_foundation_configuration_middleware",
+      "illuminate_http_request",
+      "inertia_middleware",
+      "tighten_ziggy_ziggy"
+    ],
+    "18": [
+      "apps_web_app_imports_historiseranganimport",
+      "apps_web_app_imports_historiseranganimport_historiseranganimport",
+      "apps_web_app_imports_historiseranganimport_historiseranganimport_model",
+      "apps_web_app_imports_historiseranganimport_historiseranganimport_onerror",
+      "apps_web_app_imports_historiseranganimport_historiseranganimport_onfailure",
+      "apps_web_app_imports_historiseranganimport_historiseranganimport_rules",
+      "maatwebsite_excel_concerns_importable",
+      "maatwebsite_excel_concerns_skipsonerror",
+      "maatwebsite_excel_concerns_skipsonfailure",
+      "maatwebsite_excel_concerns_tomodel",
+      "maatwebsite_excel_concerns_withheadingrow",
+      "maatwebsite_excel_concerns_withvalidation",
+      "maatwebsite_excel_validators_failure",
+      "throwable"
+    ],
+    "19": [
+      "apps_web_app_models_kecamatan",
+      "apps_web_app_models_opt",
+      "apps_web_app_models_statusendemis",
+      "apps_web_app_models_statusendemis_statusendemis",
+      "apps_web_app_services_dataseranganservice_dataseranganservice_construct",
+      "apps_web_app_services_statusendemisservice",
+      "apps_web_app_services_statusendemisservice_statusendemisservice",
+      "apps_web_app_services_statusendemisservice_statusendemisservice_clasificationindicator",
+      "apps_web_app_services_statusendemisservice_statusendemisservice_clasificationstatusendemis",
+      "apps_web_app_services_statusendemisservice_statusendemisservice_getallstatusendemis",
+      "apps_web_app_services_statusendemisservice_statusendemisservice_getmusimlist",
+      "apps_web_app_services_statusendemisservice_statusendemisservice_kalkulatestatusendemis",
+      "illuminate_database_eloquent_model",
+      "illuminate_support_facades_cache"
+    ],
+    "20": [
+      "apps_ml_app_src_preprocessing",
+      "apps_ml_app_src_preprocessing_optdatapreprocessor",
+      "apps_ml_app_src_preprocessing_optdatapreprocessor_clean_data",
+      "apps_ml_app_src_preprocessing_optdatapreprocessor_create_features",
+      "apps_ml_app_src_preprocessing_optdatapreprocessor_init",
+      "apps_ml_app_src_preprocessing_optdatapreprocessor_time_series_split_by_year",
+      "apps_ml_app_src_preprocessing_prepare_opt_dataset",
+      "apps_ml_app_src_preprocessing_rationale_10",
+      "apps_ml_app_src_preprocessing_rationale_104",
+      "apps_ml_app_src_preprocessing_rationale_115",
+      "apps_ml_app_src_preprocessing_rationale_19",
+      "apps_ml_app_src_preprocessing_rationale_63",
+      "dataframe"
+    ],
+    "21": [
+      "apps_web_config_cache",
+      "apps_web_config_database",
+      "apps_web_config_session",
+      "apps_web_database_factories_userfactory",
+      "apps_web_database_factories_userfactory_userfactory",
+      "apps_web_database_factories_userfactory_userfactory_definition",
+      "apps_web_database_factories_userfactory_userfactory_unverified",
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_25559de93bb3f75197f65d31431cc854",
+      "illuminate_database_eloquent_factories_factory",
+      "illuminate_support_str",
+      "pdo_mysql",
+      "static"
+    ],
+    "22": [
+      "apps_web_database_seeders_databaseseeder",
+      "apps_web_database_seeders_databaseseeder_databaseseeder",
+      "apps_web_database_seeders_databaseseeder_databaseseeder_run",
+      "apps_web_database_seeders_kecamatanseeder",
+      "apps_web_database_seeders_kecamatanseeder_kecamatanseeder",
+      "apps_web_database_seeders_kecamatanseeder_kecamatanseeder_run",
+      "apps_web_database_seeders_optseeder",
+      "apps_web_database_seeders_optseeder_optseeder",
+      "apps_web_database_seeders_optseeder_optseeder_run",
+      "illuminate_database_console_seeds_withoutmodelevents",
+      "illuminate_database_seeder"
+    ],
+    "23": [
+      "apps_web_app_http_controllers_dashboardcontroller_dashboardcontroller",
+      "apps_web_app_http_controllers_dashboardcontroller_dashboardcontroller_construct",
+      "apps_web_app_http_controllers_dashboardcontroller_dashboardcontroller_create",
+      "apps_web_app_http_controllers_dashboardcontroller_dashboardcontroller_destroy",
+      "apps_web_app_http_controllers_dashboardcontroller_dashboardcontroller_edit",
+      "apps_web_app_http_controllers_dashboardcontroller_dashboardcontroller_index",
+      "apps_web_app_http_controllers_dashboardcontroller_dashboardcontroller_show",
+      "apps_web_app_http_controllers_dashboardcontroller_dashboardcontroller_store",
+      "apps_web_app_http_controllers_dashboardcontroller_dashboardcontroller_update"
+    ],
+    "24": [
+      "apps_web_app_http_controllers_profilecontroller",
+      "apps_web_app_http_controllers_profilecontroller_profilecontroller",
+      "apps_web_app_http_controllers_profilecontroller_profilecontroller_destroy",
+      "apps_web_app_http_controllers_profilecontroller_profilecontroller_edit",
+      "apps_web_app_http_controllers_profilecontroller_profilecontroller_update",
+      "apps_web_app_http_requests_profileupdaterequest_profileupdaterequest",
+      "apps_web_app_http_requests_profileupdaterequest_profileupdaterequest_rules",
+      "illuminate_contracts_auth_mustverifyemail",
+      "illuminate_support_facades_redirect"
+    ],
+    "25": [
+      "apps_web_app_http_controllers_publicmapcontroller_publicmapcontroller",
+      "apps_web_app_http_controllers_publicmapcontroller_publicmapcontroller_construct",
+      "apps_web_app_http_controllers_publicmapcontroller_publicmapcontroller_create",
+      "apps_web_app_http_controllers_publicmapcontroller_publicmapcontroller_destroy",
+      "apps_web_app_http_controllers_publicmapcontroller_publicmapcontroller_edit",
+      "apps_web_app_http_controllers_publicmapcontroller_publicmapcontroller_index",
+      "apps_web_app_http_controllers_publicmapcontroller_publicmapcontroller_show",
+      "apps_web_app_http_controllers_publicmapcontroller_publicmapcontroller_store",
+      "apps_web_app_http_controllers_publicmapcontroller_publicmapcontroller_update"
+    ],
+    "26": [
+      "apps_web_jsconfig",
+      "apps_web_jsconfig_compileroptions",
+      "apps_web_jsconfig_compileroptions_baseurl",
+      "apps_web_jsconfig_compileroptions_paths",
+      "apps_web_jsconfig_exclude",
+      "apps_web_jsconfig_paths_ziggy_js",
+      "ref_node_modules",
+      "ref_public",
+      "ref_vendor_tightenco_ziggy"
+    ],
+    "27": [
+      "apps_web_app_http_controllers_modelprediksicontroller_modelprediksicontroller",
+      "apps_web_app_http_controllers_modelprediksicontroller_modelprediksicontroller_create",
+      "apps_web_app_http_controllers_modelprediksicontroller_modelprediksicontroller_destroy",
+      "apps_web_app_http_controllers_modelprediksicontroller_modelprediksicontroller_edit",
+      "apps_web_app_http_controllers_modelprediksicontroller_modelprediksicontroller_index",
+      "apps_web_app_http_controllers_modelprediksicontroller_modelprediksicontroller_show",
+      "apps_web_app_http_controllers_modelprediksicontroller_modelprediksicontroller_store",
+      "apps_web_app_http_controllers_modelprediksicontroller_modelprediksicontroller_update"
+    ],
+    "28": [
+      "apps_web_app_http_controllers_puncakserangancontroller_puncakserangancontroller",
+      "apps_web_app_http_controllers_puncakserangancontroller_puncakserangancontroller_create",
+      "apps_web_app_http_controllers_puncakserangancontroller_puncakserangancontroller_destroy",
+      "apps_web_app_http_controllers_puncakserangancontroller_puncakserangancontroller_edit",
+      "apps_web_app_http_controllers_puncakserangancontroller_puncakserangancontroller_index",
+      "apps_web_app_http_controllers_puncakserangancontroller_puncakserangancontroller_show",
+      "apps_web_app_http_controllers_puncakserangancontroller_puncakserangancontroller_store",
+      "apps_web_app_http_controllers_puncakserangancontroller_puncakserangancontroller_update"
+    ],
+    "29": [
+      "apps_web_app_providers_appserviceprovider",
+      "apps_web_app_providers_appserviceprovider_appserviceprovider",
+      "apps_web_app_providers_appserviceprovider_appserviceprovider_boot",
+      "apps_web_app_providers_appserviceprovider_appserviceprovider_register",
+      "apps_web_bootstrap_providers",
+      "illuminate_support_facades_vite",
+      "illuminate_support_serviceprovider"
+    ],
+    "30": [
+      "apps_ml_fastapi",
+      "apps_ml_prd",
+      "apps_web_analysis",
+      "apps_web_laravel",
+      "apps_web_vite",
+      "mysql_db"
+    ],
+    "31": [
+      "apps_web_app_console_commands_makeservicecommand",
+      "apps_web_app_console_commands_makeservicecommand_makeservicecommand",
+      "apps_web_app_console_commands_makeservicecommand_makeservicecommand_handle",
+      "illuminate_console_attributes_ascommand",
+      "illuminate_console_command",
+      "illuminate_support_facades_file"
+    ],
+    "32": [
+      "apps_web_config_logging",
+      "monolog_handler_nullhandler",
+      "monolog_handler_streamhandler",
+      "monolog_handler_syslogudphandler",
+      "monolog_processor_psrlogmessageprocessor"
+    ],
+    "33": [
+      "apps_web_tests_unit_exampletest",
+      "apps_web_tests_unit_exampletest_exampletest",
+      "apps_web_tests_unit_exampletest_exampletest_test_that_true_is_true",
+      "phpunit_framework_testcase"
+    ],
+    "34": [
+      "apps_web_config_excel",
+      "maatwebsite_excel_excel",
+      "phpoffice_phpspreadsheet_reader_csv"
+    ],
+    "35": [
+      "apps_web_routes_console",
+      "illuminate_foundation_inspiring",
+      "illuminate_support_facades_artisan"
+    ],
+    "36": [
+      "apps_web_entrypoint",
+      "apps_web_entrypoint_sh__entry"
+    ],
+    "37": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_8b77322ea40de4645844c2e3622c3810",
+      "illuminate_foundation_exceptions_renderer_renderer"
+    ],
+    "38": [
+      "apps_web_resources_js_app",
+      "apps_web_resources_js_app_setup"
+    ],
+    "39": [
+      "apps_web_resources_js_pages_welcome",
+      "apps_web_resources_js_pages_welcome_welcome"
+    ],
+    "40": [
+      "apps_ml_app_init"
+    ],
+    "41": [
+      "apps_web_agent_guide"
+    ],
+    "42": [
+      "apps_web_artisan"
+    ],
+    "43": [
+      "apps_web_config_app"
+    ],
+    "44": [
+      "apps_web_config_filesystems"
+    ],
+    "45": [
+      "apps_web_config_mail"
+    ],
+    "46": [
+      "apps_web_config_queue"
+    ],
+    "47": [
+      "apps_web_config_services"
+    ],
+    "48": [
+      "apps_web_postcss_config"
+    ],
+    "49": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_09ee47cb6b2ead6fe59c09eda6d900b2"
+    ],
+    "50": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_0cd3f42f50837d1c0987bdb8d9888ff2"
+    ],
+    "51": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_0d91cc84ca3ef31e353ece892735402b"
+    ],
+    "52": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_136a7c656d1a0ed4e2d0901fc10aa84a"
+    ],
+    "53": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_1bbc6102c081b21bf9f2f593a9b0e218"
+    ],
+    "54": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_25b0d221b0b3a2f9f0f84bf62ea8d4d3"
+    ],
+    "55": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_26328897c1aa10f79e9e2d0d5329b82e"
+    ],
+    "56": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_269b0fee0189e73c1136e66adf27750b"
+    ],
+    "57": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_2cd01824a837fcbad18f4451278dfa3d"
+    ],
+    "58": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_419551074a50fbe34ef86a0e07ca7190"
+    ],
+    "59": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_508f1950e4e8efe8ee069df2bd0b7937"
+    ],
+    "60": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_512b8db01bfe1c2567cddfae50a78843"
+    ],
+    "61": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_5d354b2893d50f9829507cb5db08ec2b"
+    ],
+    "62": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_6f7d30915538961ccb48e148b50dff1e"
+    ],
+    "63": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_6f8dc7bde97ea89b8aa5e7e3c794d591"
+    ],
+    "64": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_7ab7d5c4b4b95b090d192a15c186d211"
+    ],
+    "65": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_80206a5900f7d9f27081a913e0b15676"
+    ],
+    "66": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_8200d78d1269662c2e1ba8b7bf12d0c9"
+    ],
+    "67": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_8c2da46ec4c83d4f3a4a8806fe1bffb0"
+    ],
+    "68": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_8d82578c6b7f2296eff92bdd034ec3f8"
+    ],
+    "69": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_92b723efff48ff59a4baed38fab1e075"
+    ],
+    "70": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_95e3164b72bdaa6d9137dfc0a56b4aae"
+    ],
+    "71": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_9745f6a6f3fcc1ddd95648c9a006bc71"
+    ],
+    "72": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_ac4c02a786db2cf28ea74e9136b850c9"
+    ],
+    "73": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_b0160d9ee887b000436a549b742bcf73"
+    ],
+    "74": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_bae129cef9e600352d1c88ca55b5c61c"
+    ],
+    "75": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_bff06be78bce3fed83e9c65b8001e4b4"
+    ],
+    "76": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_c597eabc01b3b531b9dda87258a1b39e"
+    ],
+    "77": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_cacad9aa301188bb671ec61542d90cdf"
+    ],
+    "78": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_cfb3b0d08523933b25d0e9e498df3235"
+    ],
+    "79": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_d1f36e3de69f0a26360ce06ac4b749a6"
+    ],
+    "80": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_d54b4b1eb6bf70ee3b6a52e36ce7e503"
+    ],
+    "81": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_d8023e53ca38edd3353749f456935467"
+    ],
+    "82": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_ed53e6526bfb3c939b903194d34698dc"
+    ],
+    "83": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_ed6d86ec5660851da9f9a0dad3f4f308"
+    ],
+    "84": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_f188496d5460aa7137f13bb1da4b2db1"
+    ],
+    "85": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_f497199d26d29b5bb4d0007bbb834737"
+    ],
+    "86": [
+      "apps_web_public_d_projek_2026_07_sigap_opt_storage_framework_views_f905b6dee768cbfc0ad33952a263d185"
+    ],
+    "87": [
+      "apps_web_resources_views_app_blade"
+    ],
+    "88": [
+      "apps_web_tailwind_config"
+    ],
+    "89": [
+      "apps_web_vite_config"
+    ],
+    "90": [
+      "docker_compose"
+    ]
+  },
+  "cohesion": {
+    "0": 0.06291591046581972,
+    "1": 0.09333333333333334,
+    "2": 0.070578231292517,
+    "3": 0.051418439716312055,
+    "4": 0.044444444444444446,
+    "5": 0.08461538461538462,
+    "6": 0.05128205128205128,
+    "7": 0.08,
+    "8": 0.12681159420289856,
+    "9": 0.1471861471861472,
+    "10": 0.16883116883116883,
+    "11": 0.15789473684210525,
+    "12": 0.1695906432748538,
+    "13": 0.16993464052287582,
+    "14": 0.19607843137254902,
+    "15": 0.2,
+    "16": 0.17142857142857143,
+    "17": 0.19047619047619047,
+    "18": 0.21978021978021978,
+    "19": 0.2087912087912088,
+    "20": 0.21794871794871795,
+    "21": 0.19696969696969696,
+    "22": 0.2909090909090909,
+    "23": 0.2222222222222222,
+    "24": 0.25,
+    "25": 0.2222222222222222,
+    "26": 0.2222222222222222,
+    "27": 0.25,
+    "28": 0.25,
+    "29": 0.3333333333333333,
+    "30": 0.4666666666666667,
+    "31": 0.4,
+    "32": 0.4,
+    "33": 0.6666666666666666,
+    "34": 0.6666666666666666,
+    "35": 0.6666666666666666,
+    "36": 1.0,
+    "37": 1.0,
+    "38": 1.0,
+    "39": 1.0,
+    "40": 1.0,
+    "41": 1.0,
+    "42": 1.0,
+    "43": 1.0,
+    "44": 1.0,
+    "45": 1.0,
+    "46": 1.0,
+    "47": 1.0,
+    "48": 1.0,
+    "49": 1.0,
+    "50": 1.0,
+    "51": 1.0,
+    "52": 1.0,
+    "53": 1.0,
+    "54": 1.0,
+    "55": 1.0,
+    "56": 1.0,
+    "57": 1.0,
+    "58": 1.0,
+    "59": 1.0,
+    "60": 1.0,
+    "61": 1.0,
+    "62": 1.0,
+    "63": 1.0,
+    "64": 1.0,
+    "65": 1.0,
+    "66": 1.0,
+    "67": 1.0,
+    "68": 1.0,
+    "69": 1.0,
+    "70": 1.0,
+    "71": 1.0,
+    "72": 1.0,
+    "73": 1.0,
+    "74": 1.0,
+    "75": 1.0,
+    "76": 1.0,
+    "77": 1.0,
+    "78": 1.0,
+    "79": 1.0,
+    "80": 1.0,
+    "81": 1.0,
+    "82": 1.0,
+    "83": 1.0,
+    "84": 1.0,
+    "85": 1.0,
+    "86": 1.0,
+    "87": 1.0,
+    "88": 1.0,
+    "89": 1.0,
+    "90": 1.0
+  },
+  "gods": [
+    {
+      "id": "apps_web_app_models_user_user",
+      "label": "User",
+      "degree": 36
+    },
+    {
+      "id": "apps_web_app_http_controllers_controller_controller",
+      "label": "Controller",
+      "degree": 28
+    },
+    {
+      "id": "apps_web_app_services_optservice_optservice",
+      "label": "OPTService",
+      "degree": 21
+    },
+    {
+      "id": "apps_web_app_models_kecamatan_kecamatan",
+      "label": "Kecamatan",
+      "degree": 19
+    },
+    {
+      "id": "apps_ml_app_src_services_opt_service_optservice",
+      "label": "OptService",
+      "degree": 19
+    },
+    {
+      "id": "apps_web_tests_testcase_testcase",
+      "label": "TestCase",
+      "degree": 18
+    },
+    {
+      "id": "apps_web_app_models_historiserangan_historiserangan",
+      "label": "HistoriSerangan",
+      "degree": 18
+    },
+    {
+      "id": "apps_web_app_services_dataseranganservice_dataseranganservice",
+      "label": "DataSeranganService",
+      "degree": 18
+    },
+    {
+      "id": "apps_web_app_models_opt_opt",
+      "label": "OPT",
+      "degree": 17
+    },
+    {
+      "id": "apps_web_app_services_statusendemisservice_statusendemisservice",
+      "label": "StatusEndemisService",
+      "degree": 17
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Python ML Service",
+      "target": "MySQL Database",
+      "source_files": [
+        "apps/ml/PRD.md",
+        "docker-compose.yml"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "Laravel Web Application",
+      "target": "MySQL Database",
+      "source_files": [
+        "apps/web/AGENT.md",
+        "docker-compose.yml"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "KecamatanController",
+      "target": "Controller",
+      "source_files": [
+        "apps/web/app/Http/Controllers/KecamatanController.php",
+        "apps/web/app/Http/Controllers/Controller.php"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inherits",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "DataSeranganController",
+      "target": "KecamatanService",
+      "source_files": [
+        "apps/web/app/Http/Controllers/DataSeranganController.php",
+        "apps/web/app/Services/KecamatanService.php"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "ConfirmablePasswordController",
+      "target": "Controller",
+      "source_files": [
+        "apps/web/app/Http/Controllers/Auth/ConfirmablePasswordController.php",
+        "apps/web/app/Http/Controllers/Controller.php"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inherits",
+      "why": "bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `User` connect `Authentication and User Testing` to `Request Validation and Throttling`, `Auth and Dashboard Controllers`, `Auth Routing and Responses`, `Database and Session Config`, `Database Seeders`?",
+      "why": "High betweenness centrality (0.065) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `Controller` connect `Auth and Verification Controllers` to `Attack History Management`, `District Management`, `Pest Control Services`, `Auth and Dashboard Controllers`, `Auth Routing and Responses`, `App Initialization and Middleware`, `Dashboard Resource Controller`, `User Profile Management`, `Public Map Controller`, `Prediction Model Controller`, `Peak Attack Controller`?",
+      "why": "High betweenness centrality (0.036) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `HistoriSerangan` connect `Attack History Management` to `Endemic Status Services`, `Excel Data Import`, `Request Validation and Throttling`, `Pest Control Services`?",
+      "why": "High betweenness centrality (0.012) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `DropDownContext`, `centerCoords`, `BULAN_OPTIONS` to the rest of the system?",
+      "why": "82 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Authentication and User Testing` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.06291591046581972 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `UI Component Library` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.09333333333333334 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Admin Layout and Hooks` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.070578231292517 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

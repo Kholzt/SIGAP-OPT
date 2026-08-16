@@ -22,7 +22,9 @@ export default function StatusEndemisMap({
 }) {
     const [isClient, setIsClient] = useState(false);
     const [mapComponents, setMapComponents] = useState(null);
-    const [kecamatanGeoJson, setKecamatanGeoJson] = useState(cachedKecamatanGeoJson);
+    const [kecamatanGeoJson, setKecamatanGeoJson] = useState(
+        cachedKecamatanGeoJson,
+    );
     const [mapLayer, setMapLayer] = useState("satellite");
     const geoJsonRef = useRef(null);
 
@@ -227,20 +229,26 @@ export default function StatusEndemisMap({
             zoomControl={false}
             className="h-full w-full z-0"
         >
+            {/* Base Layer */}
             <TileLayer
                 url={
                     mapLayer === "satellite"
                         ? "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
                         : mapLayer === "terrain"
-                          ? "https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}"
+                          ? "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
                           : "https://{s}.tile.openstreetmap.org/{z}/{y}/{x}.png"
                 }
                 attribution={
-                    mapLayer === "terrain" || mapLayer === "satellite"
+                    mapLayer === "satellite"
                         ? "&copy; Esri &mdash; Source: USGS, Esri, NOAA"
                         : "&copy; OpenStreetMap contributors"
                 }
             />
+
+            {/* Label / Nama Wilayah Overlay khusus Satelit */}
+            {mapLayer === "satellite" && (
+                <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}" />
+            )}
 
             {filteredGeoJson && (
                 <GeoJSON
