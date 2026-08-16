@@ -1,0 +1,147 @@
+services:
+  # =========================
+  # Laravel
+  # =========================
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+
+    container_name: sigap-tani-web
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./apps/web:/var/www/html
+
+    env_file:
+      - ./apps/web/.env
+
+    depends_on:
+      - ml
+      - mysql
+
+    networks:
+      - sigap-tani
+
+  # =========================
+  # Vite / React
+  # =========================
+  vite:
+    image: node:22-alpine
+
+    container_name: sigap-tani-vite
+
+    working_dir: /var/www/html
+
+    volumes:
+      - ./apps/web:/var/www/html
+      - vite_node_modules:/var/www/html/node_modules
+
+    ports:
+      - "5173:5173"
+
+    command:
+      ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+
+    networks:
+      - sigap-tani
+
+  # =========================
+  # Python ML
+  # =========================
+  ml:
+    build:
+      context: ./apps/ml
+      dockerfile: Dockerfile
+
+    container_name: sigap-tani-ml
+
+    ports:
+      - "8001:8001"
+
+    volumes:
+      - ./apps/ml:/app
+
+    command:
+      [
+        "uvicorn",
+        "main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8001",
+        "--reload"
+      ]
+
+    env_file:
+      - ./apps/ml/.env
+
+    depends_on:
+      - mysql
+
+    networks:
+      - sigap-tani
+
+  # =========================
+  # MySQL
+  # =========================
+  mysql:
+    image: mysql:8.0
+
+    container_name: sigap-tani-mysql
+
+    restart: unless-stopped
+
+    environment:
+      MYSQL_DATABASE: sigap_tani
+      MYSQL_ROOT_PASSWORD: root
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    networks:
+      - sigap-tani
+
+  # =========================
+  # phpMyAdmin
+  # =========================
+  phpmyadmin:
+    image: phpmyadmin:latest
+
+    container_name: sigap-tani-phpmyadmin
+
+    restart: unless-stopped
+
+    ports:
+      - "8080:80"
+
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+
+    depends_on:
+      - mysql
+
+    networks:
+      - sigap-tani
+
+
+# =========================
+# Network
+# =========================
+networks:
+  sigap-tani:
+
+
+# =========================
+# Volumes
+# =========================
+volumes:
+  mysql_data:
+  vite_node_modules:
