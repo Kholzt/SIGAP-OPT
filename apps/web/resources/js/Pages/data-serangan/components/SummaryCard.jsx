@@ -1,5 +1,5 @@
 import { AlertTriangle, Bug, Clock } from "lucide-react";
-export default function SummaryCard() {
+export default function SummaryCard({countAttacksThisMonth}) {
     return (
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {/* Card 1 */}
@@ -12,7 +12,7 @@ export default function SummaryCard() {
                         Total Laporan Bulan Ini
                     </p>
                     <p className="text-2xl font-extrabold text-slate-900 mt-0.5">
-                        1,248
+                        {countAttacksThisMonth}
                     </p>
                 </div>
                 <div className="absolute right-0 bottom-0 w-16 h-16 bg-teal-50 rounded-tl-full opacity-50 -z-0"></div>

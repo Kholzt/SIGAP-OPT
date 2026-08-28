@@ -14,13 +14,14 @@ import Alert from "@/Components/Alert";
 
 export default function DataSerangan({
     allKecamatan,
+    countAttacksThisMonth,
     allOPT,
+    allMusim,
     dataSerangan,
     filters,
     flash,
 }) {
     const ds = useDataSerangan(filters ?? {});
-
     return (
         <AdminLayout currentTab="Data Serangan OPT">
             <Head title="Data Serangan OPT" />
@@ -70,16 +71,19 @@ export default function DataSerangan({
                 </div>
 
                 {/* Summary Cards */}
-                <SummaryCard />
+                <SummaryCard countAttacksThisMonth={countAttacksThisMonth} />
 
                 {/* Filter */}
                 <FilterDataSerangan
                     allKecamatan={allKecamatan}
                     allOPT={allOPT}
+                    allMusim={allMusim}
                     selectedKecamatan={ds.selectedKecamatan}
                     setSelectedKecamatan={ds.setSelectedKecamatan}
                     selectedOPT={ds.selectedOPT}
                     setSelectedOPT={ds.setSelectedOPT}
+                    selectedMusim={ds.selectedMusim}
+                    setSelectedMusim={ds.setSelectedMusim}
                     searchValue={ds.searchValue}
                     setSearchValue={ds.setSearchValue}
                     onFilter={ds.handleFilter}

@@ -5,24 +5,16 @@ import StatusEndemisMap from "../../components/StatusEndemisMap";
 import FilterWilayahCard from "./components/FilterWilayahCard";
 import LegendaStatusCard from "./components/LegendaStatusCard";
 import StatusEndemisTable from "./components/StatusEndemisTable";
+import UseStatusEndemis from "@/hooks/useStatusEndemis";
 
 export default function StatusEndemis({
     allKecamatan = [],
     allOPT = [],
     musimList = [],
     statusMatrix = {},
+    filters
 }) {
-    const [selectedKecamatan, setSelectedKecamatan] = useState("");
-    const [selectedOPTId, setSelectedOPTId] = useState(
-        allOPT.length > 0 ? allOPT[0].id : "",
-    );
-    const [selectedMusim, setSelectedMusim] = useState(
-        musimList.length > 0 ? musimList[0] : "2024/2025",
-    );
-
-    const selectedOPT =
-        allOPT.find((o) => String(o.id) === String(selectedOPTId)) || allOPT[0];
-
+    const se = UseStatusEndemis(filters??null);
     return (
         <AdminLayout currentTab="Status Endemis">
             <Head title="Status Endemis" />

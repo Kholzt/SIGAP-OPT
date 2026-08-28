@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
 class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
@@ -17,7 +18,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             KecamatanSeeder::class,
-            OPTSeeder::class
+            OPTSeeder::class,
         ]);
         // User::factory(10)->create();
 

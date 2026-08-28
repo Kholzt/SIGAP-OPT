@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Kecamatan;
-use App\Services\KecamatanService;
 use App\Http\Requests\StoreKecamatanRequest;
 use App\Http\Requests\UpdateKecamatanRequest;
+use App\Models\Kecamatan;
+use App\Services\KecamatanService;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class KecamatanController extends Controller
@@ -19,10 +19,11 @@ class KecamatanController extends Controller
         $perPage = $request->input('per_page', 10);
 
         $kecamatans = $this->kecamatanService->getPaginatedKecamatan($search, (int) $perPage);
+
         return Inertia::render('kecamatan/Index', [
             'kecamatans' => $kecamatans,
             'search'     => $search,
-            'flash'   => ['success' => session('success'), 'error' => session('error')],
+            'flash'      => ['success' => session('success'), 'error' => session('error')],
         ]);
     }
 

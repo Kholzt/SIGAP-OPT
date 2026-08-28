@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('opt', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_opt', 30);
-            $table->timestamps();
+        Schema::table('status_endemis', function (Blueprint $table) {
+            $table->unique(['opt_id', 'kecamatan_id', 'musim_tanaman']);
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('opts');
+        Schema::table('status_endemis', function (Blueprint $table) {
+            //
+        });
     }
 };

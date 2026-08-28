@@ -14,7 +14,7 @@ class UpdateOptRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama_opt' => 'required|string|max:100|unique:opt,nama_opt,' . $this->opt->id,
+            'nama_opt' => 'required|string|max:100|unique:opt,nama_opt,'.$this->opt->id,
         ];
     }
 

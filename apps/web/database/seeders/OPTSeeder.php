@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\OPT;
 use Illuminate\Database\Seeder;
 
 class OPTSeeder extends Seeder
@@ -12,18 +12,19 @@ class OPTSeeder extends Seeder
      */
     public function run(): void
     {
-       $allOPT = [
-           'BLAS',
-           'HDB',
-           'PBP',
-           'TIKUS',
-           'TUNGRO',
-           'WBC'
-       ];
+        $allOPT = [
+            'BLAS',
+            'HDB',
+            'PBP',
+            'TIKUS',
+            'TUNGRO',
+            'WBC',
+        ];
 
-       foreach ($allOPT as $nama_opt) {
-                \App\Models\OPT::create([
-                            'nama_opt' => $nama_opt
-                        ]);
-    }}
+        foreach ($allOPT as $nama_opt) {
+            OPT::create([
+                'nama_opt' => $nama_opt,
+            ]);
+        }
+    }
 }

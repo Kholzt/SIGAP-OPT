@@ -2,36 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Inertia\Inertia;
-use App\Services\KecamatanService;
-use App\Services\OPTService;
-use App\Services\DataSeranganService;
+use App\Http\Requests\ImportDataSeranganRequest;
 use App\Http\Requests\StoreDataSeranganRequest;
 use App\Http\Requests\UpdateDataSeranganRequest;
-use App\Http\Requests\ImportDataSeranganRequest;
 use App\Models\HistoriSerangan;
+use App\Services\DataSeranganService;
+use App\Services\KecamatanService;
+use App\Services\OPTService;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class DataSeranganController extends Controller
 {
     public function __construct(
         protected KecamatanService $kecamatanService,
         protected OPTService $optService,
-        protected DataSeranganService $dataSeranganService
+        protected DataSeranganService $dataSeranganService,
     ) {}
 
     public function index(Request $request)
     {
-        $search      = $request->input('search', '');
+        $search = $request->input('search', '');
         $kecamatanId = $request->input('kecamatan_id');
-        $optId       = $request->input('opt_id');
-        $perPage     = $request->input('per_page', 10);
+        $musim = $request->input('musim');
+        $optId = $request->input('opt_id');
+        $perPage = $request->input('per_page', 10);
 
         return Inertia::render('data-serangan/DataSerangan', [
-            'allKecamatan' => $this->kecamatanService->getAllKecamatan(),
-            'allOPT'       => $this->optService->getAllOPT(),
-            'dataSerangan' => $this->dataSeranganService->getPaginatedDataSerangan(
-                $search, (int) $perPage, $kecamatanId, $optId, ["tahun" => "desc","bulan" => "desc"]
+            'allKecamatan'          => $this->kecamatanService->getAllKecamatan(),
+            'allOPT'                => $this->optService->getAllOPT(),
+            'allMusim'              => $this->dataSeranganService->getMusimList()->reverse()->values(),
+            'countAttacksThisMonth' => $this->dataSeranganService->countAttacksThisMonth(),
+            'dataSerangan'          => $this->dataSeranganService->getPaginatedDataSerangan(
+                select       : ['bulan', 'tahun', 'kecamatan_id', 'opt_id', 'jumlah_serangan', 'musim_tanaman', 'luas_puso'],
+                search       : $search,
+                perPage      : (int) $perPage,
+                kecamatanId  : $kecamatanId,
+                optId        : $optId,
+                order        : ['tahun' => 'desc', 'bulan' => 'desc'],
+                where        : $musim ? ['musim_tanaman' => $musim] : null,
             ),
             'filters' => compact('search', 'kecamatanId', 'optId'),
             'flash'   => ['success' => session('success'), 'error' => session('error')],
@@ -68,9 +77,9 @@ class DataSeranganController extends Controller
         $message = "Berhasil mengimpor {$result['imported']} data.";
         $isSuccess = true;
 
-        if (!empty($result['errors'])) {
+        if (! empty($result['errors'])) {
             $isSuccess = false;
-            $message .= ' Beberapa baris gagal: ' . count($result['errors']) . ' baris. Silakan periksa file log untuk detailnya.';
+            $message .= ' Beberapa baris gagal: '.count($result['errors']).' baris. Silakan periksa file log untuk detailnya.';
         }
 
         return redirect()->route('data-serangan')

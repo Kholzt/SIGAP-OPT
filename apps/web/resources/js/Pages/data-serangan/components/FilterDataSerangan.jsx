@@ -7,10 +7,13 @@ import { Filter, RotateCcw } from 'lucide-react';
 export default function FilterDataSerangan({
     allKecamatan = [],
     allOPT = [],
+    allMusim = [],
     selectedKecamatan,
     setSelectedKecamatan,
     selectedOPT,
     setSelectedOPT,
+    selectedMusim,
+    setSelectedMusim,
     searchValue,
     setSearchValue,
     onFilter,
@@ -39,6 +42,22 @@ export default function FilterDataSerangan({
                     />
                 </div>
 
+                {/* Musim */}
+                <div className="md:col-span-3">
+                    <label className="block text-xs font-semibold text-slate-600 mb-1.5">
+                        Musim Tanam
+                    </label>
+                    <select
+                        value={selectedMusim}
+                        onChange={(e) => setSelectedMusim(e.target.value)}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    >
+                        <option value="">Semua Musim</option>
+                        {allMusim.map((kec) => (
+                            <option key={kec} value={kec}>{kec}</option>
+                        ))}
+                    </select>
+                </div>
                 {/* Kecamatan */}
                 <div className="md:col-span-3">
                     <label className="block text-xs font-semibold text-slate-600 mb-1.5">

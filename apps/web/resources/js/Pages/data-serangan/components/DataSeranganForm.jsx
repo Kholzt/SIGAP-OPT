@@ -21,6 +21,7 @@ export default function DataSeranganForm({
 
     const isCreate = modalType === 'create';
 
+    
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             {/* Backdrop */}
@@ -135,16 +136,17 @@ export default function DataSeranganForm({
                             <label className="block text-sm font-semibold text-slate-700 mb-1.5">
                                 Musim Tanaman <span className="text-rose-500">*</span>
                             </label>
-                            <input
-                                type="text"
+                            <select
                                 value={data.musim_tanaman}
                                 onChange={(e) => onChange('musim_tanaman', e.target.value)}
-                                placeholder="Contoh: MT I 2024"
-                                maxLength={255}
                                 className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition ${
                                     errors.musim_tanaman ? 'border-rose-400 bg-rose-50' : 'border-slate-200'
                                 }`}
-                            />
+                            >
+                                <option value="">Pilih Musim Tanam</option>
+                                <option value="MP">Musim Penghujan (MP)</option>
+                                <option value="MK">Musim Kemarau (MK)</option>
+                            </select>
                             {errors.musim_tanaman && (
                                 <p className="mt-1.5 text-xs text-rose-600 font-medium">{errors.musim_tanaman}</p>
                             )}

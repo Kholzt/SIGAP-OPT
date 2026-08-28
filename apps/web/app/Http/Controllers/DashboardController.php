@@ -2,18 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Inertia\Inertia;
 use App\Services\OPTService;
 use App\Services\StatusEndemisService;
+use Fruitcake\LaravelDebugbar\Facades\Debugbar;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
+
 class DashboardController extends Controller
 {
-    public function __construct(protected OPTService $optService,protected StatusEndemisService $statusEndemisService) {}
+    public function __construct(protected OPTService $optService, protected StatusEndemisService $statusEndemisService) {}
+
     public function index()
     {
+        Debugbar::info('sd');
+        Debugbar::error('Error!');
+        Debugbar::warning('Watch out…');
+        Debugbar::addMessage('Another message', 'mylabel');
         $countOPT = 0;
+
         return Inertia::render('dashboard/Dashboard', [
-            'countOPT' => $countOPT
+            'countOPT' => $countOPT,
         ]);
     }
 

@@ -5,22 +5,16 @@ namespace App\Imports;
 use App\Models\HistoriSerangan;
 use App\Models\Kecamatan;
 use App\Models\OPT;
-use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\SkipsOnError;
+use Maatwebsite\Excel\Concerns\SkipsOnFailure;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
-use Maatwebsite\Excel\Concerns\SkipsOnFailure;
-use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Validators\Failure;
 use Throwable;
 
-class HistoriSeranganImport implements
-    ToModel,
-    WithHeadingRow,
-    WithValidation,
-    SkipsOnFailure,
-    SkipsOnError
+class HistoriSeranganImport implements SkipsOnError, SkipsOnFailure, ToModel, WithHeadingRow, WithValidation
 {
     use Importable;
 
@@ -28,46 +22,47 @@ class HistoriSeranganImport implements
 
     public array $errors = [];
 
-   public function model(array $row)
+    public function model(array $row)
     {
         $kecamatan = Kecamatan::where('nama_kecamatan', trim($row['kecamatan']))->first();
 
         $opt = OPT::where('nama_opt', trim($row['jenis_opt']))->first();
 
-        if (!$kecamatan || !$opt) {
+        if (! $kecamatan || ! $opt) {
             $this->errors[] = [
-                'row' => $row,
+                'row'    => $row,
                 'errors' => [
-                    !$kecamatan ? 'Kecamatan tidak ditemukan.' : null,
-                    !$opt ? 'OPT tidak ditemukan.' : null,
-                ]
+                    ! $kecamatan ? 'Kecamatan tidak ditemukan.' : null,
+                    ! $opt ? 'OPT tidak ditemukan.' : null,
+                ],
             ];
 
             return null; // skip baris ini
         }
 
         $this->success++;
+
         return new HistoriSerangan([
-            'bulan'            => $row['bulan'],
-            'tahun'            => $row['tahun'],
-            'kecamatan_id'     => $kecamatan->id,
-            'opt_id'           => $opt->id,
-            'jumlah_serangan'  => $row['luas_serangan'],
-            'musim_tanaman'    => $row['musim_tanam'],
-            'luas_puso'        => $row['luas_puso'],
+            'bulan'           => $row['bulan'],
+            'tahun'           => $row['tahun'],
+            'kecamatan_id'    => $kecamatan->id,
+            'opt_id'          => $opt->id,
+            'jumlah_serangan' => $row['luas_serangan'],
+            'musim_tanaman'   => $row['musim_tanam'],
+            'luas_puso'       => $row['luas_puso'],
         ]);
     }
 
     public function rules(): array
     {
         return [
-            '*.bulan' => 'required|integer|between:1,12',
-            '*.tahun' => 'required|integer',
-            '*.kecamatan' => 'required',
-            '*.jenis_opt' => 'required',
+            '*.bulan'         => 'required|integer|between:1,12',
+            '*.tahun'         => 'required|integer',
+            '*.kecamatan'     => 'required',
+            '*.jenis_opt'     => 'required',
             '*.luas_serangan' => 'required|numeric|min:0',
-            '*.musim_tanam' => 'required',
-            '*.luas_puso' => 'nullable|numeric|min:0',
+            '*.musim_tanam'   => 'required',
+            '*.luas_puso'     => 'nullable|numeric|min:0',
         ];
     }
 
@@ -75,7 +70,7 @@ class HistoriSeranganImport implements
     {
         foreach ($failures as $failure) {
             $this->errors[] = [
-                'row' => $failure->row(),
+                'row'    => $failure->row(),
                 'column' => $failure->attribute(),
                 'errors' => $failure->errors(),
             ];
@@ -85,7 +80,7 @@ class HistoriSeranganImport implements
     public function onError(Throwable $e)
     {
         $this->errors[] = [
-            'row' => '-',
+            'row'    => '-',
             'column' => '-',
             'errors' => [$e->getMessage()],
         ];

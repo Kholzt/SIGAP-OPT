@@ -1,14 +1,14 @@
 <?php
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PublicMapController;
+
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataSeranganController;
-use App\Http\Controllers\ModelPrediksiController;
-use App\Http\Controllers\PuncakSeranganController;
-use App\Http\Controllers\OptController;
 use App\Http\Controllers\KecamatanController;
-
+use App\Http\Controllers\ModelPrediksiController;
+use App\Http\Controllers\OptController;
+use App\Http\Controllers\PublicMapController;
+use App\Http\Controllers\PuncakSeranganController;
 use App\Http\Controllers\StatusEndemisController;
+use Illuminate\Support\Facades\Route;
 
 // Public pages
 Route::get('/', [PublicMapController::class, 'index'])->name('home');

@@ -1,16 +1,25 @@
 <?php
+
 namespace App\Services;
 
 use App\Models\Kecamatan;
+use Illuminate\Support\Collection;
 
 class KecamatanService
 {
-    public function getAllKecamatan($orderBy = 'id', $direction = 'asc')
+    /**
+     * getAllKecamatan
+     *
+     * @param  mixed  $select
+     * @param  mixed  $orderBy
+     * @param  mixed  $direction
+     */
+    public function getAllKecamatan(array|string $select = ['*'], string $orderBy = 'id', string $direction = 'asc'): Collection
     {
-        return Kecamatan::orderBy($orderBy, $direction)->get();
+        return Kecamatan::select($select)->orderBy($orderBy, $direction)->get();
     }
 
-    public function getPaginatedKecamatan( $search = '',  $perPage = 10)
+    public function getPaginatedKecamatan($search = '', $perPage = 10)
     {
         return Kecamatan::when($search, fn ($q) => $q->where('nama_kecamatan', 'like', "%{$search}%"))
             ->orderBy('id', 'asc')
@@ -26,6 +35,7 @@ class KecamatanService
     public function updateKecamatan(Kecamatan $kecamatan, array $data)
     {
         $kecamatan->update($data);
+
         return $kecamatan;
     }
 

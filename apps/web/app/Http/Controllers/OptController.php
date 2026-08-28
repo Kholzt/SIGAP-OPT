@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\OPT;
-use App\Services\OPTService;
 use App\Http\Requests\StoreOptRequest;
 use App\Http\Requests\UpdateOptRequest;
+use App\Models\OPT;
+use App\Services\OPTService;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class OptController extends Controller
@@ -23,7 +23,7 @@ class OptController extends Controller
         return Inertia::render('opt/Index', [
             'opts'   => $opts,
             'search' => $search,
-            'flash'   => ['success' => session('success'), 'error' => session('error')],
+            'flash'  => ['success' => session('success'), 'error' => session('error')],
         ]);
     }
 

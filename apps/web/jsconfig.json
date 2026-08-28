@@ -1,10 +1,33 @@
+// {
+//     "compilerOptions": {
+//         "baseUrl": ".",
+//         "paths": {
+//             "@/*": ["resources/js/*"],
+//             "ziggy-js": ["./vendor/tightenco/ziggy"]
+//         }
+//     },
+//     "exclude": ["node_modules", "public"]
+// }
+
 {
-    "compilerOptions": {
-        "baseUrl": ".",
-        "paths": {
-            "@/*": ["resources/js/*"],
-            "ziggy-js": ["./vendor/tightenco/ziggy"]
-        }
-    },
-    "exclude": ["node_modules", "public"]
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "checkJs": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["resources/js/*"],
+      "ziggy-js": ["vendor/tightenco/ziggy/dist/index.esm.js"]
+    }
+  },
+  "include": [
+    "resources/js/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "public"
+  ]
 }

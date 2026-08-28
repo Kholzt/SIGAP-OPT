@@ -12,15 +12,16 @@ use Illuminate\Support\Facades\File;
 // )]
 class MakeServiceCommand extends Command
 {
-      protected $signature = 'make:service {name}';
+    protected $signature = 'make:service {name}';
 
     protected $description = 'Create a new service class';
+
     public function handle(): int
     {
         $name = $this->argument('name');
 
         $directory = app_path('Services');
-        $path = "{$directory}/{$name}.php";
+        $path      = "{$directory}/{$name}.php";
 
         if (File::exists($path)) {
             $this->error("Service {$name} already exists.");
@@ -51,6 +52,4 @@ PHP;
 
         return self::SUCCESS;
     }
-
- 
 }

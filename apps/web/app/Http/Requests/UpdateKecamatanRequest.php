@@ -14,7 +14,7 @@ class UpdateKecamatanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama_kecamatan' => 'required|string|max:100|unique:kecamatan,nama_kecamatan,' . $this->kecamatan->id,
+            'nama_kecamatan' => 'required|string|max:100|unique:kecamatan,nama_kecamatan,'.$this->kecamatan->id,
         ];
     }
 

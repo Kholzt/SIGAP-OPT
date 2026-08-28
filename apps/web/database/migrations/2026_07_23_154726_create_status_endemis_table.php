@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('opt_id')->references('id')->on('opt')->onDelete('cascade');
             $table->foreignId('kecamatan_id')->references('id')->on('kecamatan')->onDelete('cascade');
-            $table->string("musim_tanaman",10);
+            $table->string('musim_tanaman', 10);
             $table->string('status')->nullable();
             $table->timestamps();
         });

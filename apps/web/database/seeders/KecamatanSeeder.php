@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Kecamatan;
 use Illuminate\Database\Seeder;
 
 class KecamatanSeeder extends Seeder
@@ -38,9 +38,9 @@ class KecamatanSeeder extends Seeder
         ];
 
         foreach ($kecamatan as $nama_kecamatan) {
-        \App\Models\Kecamatan::create([
-            'nama_kecamatan' => $nama_kecamatan
-        ]);
+            Kecamatan::create([
+                'nama_kecamatan' => $nama_kecamatan,
+            ]);
+        }
     }
-}
 }
