@@ -8,7 +8,7 @@ export default function Header({ activeTab, setActiveTab }) {
                     href="/"
                     className="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-1"
                 >
-                    AgriPredict <span className="text-emerald-700">GIS</span>
+                    AgriPredict <span className="text-primary-700">GIS</span>
                 </Link>
 
                 {/* Navigation Tabs */}
@@ -20,7 +20,7 @@ export default function Header({ activeTab, setActiveTab }) {
                                 onClick={() => setActiveTab(tab)}
                                 className={`h-full text-sm font-semibold flex items-center border-b-2 transition ${
                                     activeTab === tab
-                                        ? "border-emerald-700 text-emerald-800 font-bold"
+                                        ? "border-primary-700 text-primary-800 font-bold"
                                         : "border-transparent text-slate-600 hover:text-slate-900"
                                 }`}
                             >

@@ -27,7 +27,7 @@ export default function OptForm({ modalType, data, errors, processing, onChange,
                             onChange={(e) => onChange('nama_opt', e.target.value)}
                             placeholder="Contoh: Tikus"
                             maxLength={100}
-                            className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition ${errors.nama_opt ? 'border-rose-400 bg-rose-50' : 'border-slate-200'}`}
+                            className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent transition ${errors.nama_opt ? 'border-rose-400 bg-rose-50' : 'border-slate-200'}`}
                         />
                         {errors.nama_opt && (
                             <p className="mt-1.5 text-xs text-rose-600 font-medium">{errors.nama_opt}</p>
@@ -38,7 +38,7 @@ export default function OptForm({ modalType, data, errors, processing, onChange,
                         <button type="button" onClick={onClose} className="px-4 py-2 text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition">
                             Batal
                         </button>
-                        <button type="submit" disabled={processing} className="px-5 py-2 text-sm font-semibold text-white bg-emerald-500 hover:bg-emerald-600 rounded-xl transition disabled:opacity-60">
+                        <button type="submit" disabled={processing} className="px-5 py-2 text-sm font-semibold text-white bg-primary-500 hover:bg-primary-600 rounded-xl transition disabled:opacity-60">
                             {processing ? 'Menyimpan...' : modalType === 'create' ? 'Simpan' : 'Perbarui'}
                         </button>
                     </div>

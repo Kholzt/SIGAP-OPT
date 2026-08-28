@@ -14,7 +14,7 @@ export default function OptTable({ rows, paginator, searchValue, onSearch, onEdi
                         placeholder="Cari nama OPT..."
                         value={searchValue}
                         onChange={(e) => onSearch(e.target.value)}
-                        className="w-full pl-9 pr-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
+                        className="w-full pl-9 pr-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent"
                     />
                 </div>
             </div>
@@ -49,7 +49,7 @@ export default function OptTable({ rows, paginator, searchValue, onSearch, onEdi
                                     </td>
                                     <td className="px-5 py-3.5 text-right">
                                         <div className="flex justify-end gap-2">
-                                            <button onClick={() => onEdit(opt)} className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition">
+                                            <button onClick={() => onEdit(opt)} className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-lg transition">
                                                 <Pencil className="w-3.5 h-3.5" /> Edit
                                             </button>
                                             <button onClick={() => onDelete(opt)} className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-rose-600 bg-rose-50 hover:bg-rose-100 rounded-lg transition">

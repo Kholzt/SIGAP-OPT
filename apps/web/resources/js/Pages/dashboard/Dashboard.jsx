@@ -24,14 +24,14 @@ export default function Dashboard() {
                             <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                                 Total Laporan Serangan
                             </span>
-                            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                            <div className="w-10 h-10 rounded-xl bg-primary-50 text-primary-600 flex items-center justify-center">
                                 <Bug className="w-5 h-5" />
                             </div>
                         </div>
                         <p className="text-2xl font-extrabold text-slate-900 mt-3">
                             1,248
                         </p>
-                        <span className="text-xs font-semibold text-emerald-600 mt-1 inline-block">
+                        <span className="text-xs font-semibold text-primary-600 mt-1 inline-block">
                             +12% dibanding bulan lalu
                         </span>
                     </div>
@@ -72,14 +72,14 @@ export default function Dashboard() {
                             <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                                 Akurasi Prediksi
                             </span>
-                            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                            <div className="w-10 h-10 rounded-xl bg-primary-50 text-primary-600 flex items-center justify-center">
                                 <TrendingUp className="w-5 h-5" />
                             </div>
                         </div>
                         <p className="text-2xl font-extrabold text-slate-900 mt-3">
                             94.2%
                         </p>
-                        <span className="text-xs font-semibold text-blue-600 mt-1 inline-block">
+                        <span className="text-xs font-semibold text-primary-600 mt-1 inline-block">
                             Model ML V2.1
                         </span>
                     </div>

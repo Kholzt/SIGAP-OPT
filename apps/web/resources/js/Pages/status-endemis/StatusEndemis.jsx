@@ -14,7 +14,8 @@ export default function StatusEndemis({
     statusMatrix = {},
     filters
 }) {
-    const se = UseStatusEndemis(filters??null);
+    const defaultOpt = filters?.selectedOpt ?? (allOPT.length > 0 ? allOPT[0].id : null);
+    const se = UseStatusEndemis({ ...(filters || {}), selectedOpt: defaultOpt });
     return (
         <AdminLayout currentTab="Status Endemis">
             <Head title="Status Endemis" />
@@ -24,8 +25,8 @@ export default function StatusEndemis({
                 <div className="relative h-[540px] md:h-[580px] w-full rounded-3xl overflow-hidden border border-slate-200/80 shadow-lg bg-slate-900 z-10">
                     <StatusEndemisMap
                         allKecamatan={allKecamatan}
-                        selectedKecamatanId={selectedKecamatan}
-                        selectedOPTId={selectedOPTId}
+                        selectedKecamatanId={se.selectedKecamatan}
+                        selectedOPTId={se.selectedOpt}
                         statusMatrix={statusMatrix}
                     />
 
@@ -33,19 +34,17 @@ export default function StatusEndemis({
                         allKecamatan={allKecamatan}
                         allOPT={allOPT}
                         musimList={musimList}
-                        selectedKecamatan={selectedKecamatan}
-                        setSelectedKecamatan={setSelectedKecamatan}
-                        selectedOPTId={selectedOPTId}
-                        setSelectedOPTId={setSelectedOPTId}
-                        selectedMusim={selectedMusim}
-                        setSelectedMusim={setSelectedMusim}
+                        selectedKecamatan={se.selectedKecamatan}
+                        setSelectedKecamatan={se.setSelectedKecamatan}
+                        selectedOPTId={se.selectedOpt}
+                        setSelectedOPTId={se.setSelectedOpt}
+                        selectedMusim={se.selectedMusimTanaman}
+                        setSelectedMusim={se.setSelectedMusimTanaman}
                     />
 
                     <LegendaStatusCard
                         selectedOPTName={
-                            selectedOPT
-                                ? selectedOPT.nama_opt
-                                : "Wereng Batang Coklat"
+                            allOPT.find(o => String(o.id) === String(se.selectedOpt))?.nama_opt || "Data OPT"
                         }
                     />
                 </div>
@@ -54,8 +53,8 @@ export default function StatusEndemis({
                 <StatusEndemisTable
                     allKecamatan={allKecamatan}
                     allOPT={allOPT}
-                    selectedKecamatan={selectedKecamatan}
-                    selectedMusim={selectedMusim}
+                    selectedKecamatan={se.selectedKecamatan}
+                    selectedMusim={se.selectedMusimTanaman}
                     statusMatrix={statusMatrix}
                 />
             </div>

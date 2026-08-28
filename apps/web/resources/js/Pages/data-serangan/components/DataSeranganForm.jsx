@@ -52,7 +52,7 @@ export default function DataSeranganForm({
                             <select
                                 value={data.bulan}
                                 onChange={(e) => onChange('bulan', e.target.value)}
-                                className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition ${
+                                className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent transition ${
                                     errors.bulan ? 'border-rose-400 bg-rose-50' : 'border-slate-200'
                                 }`}
                             >
@@ -78,7 +78,7 @@ export default function DataSeranganForm({
                                 placeholder="Contoh: 2024"
                                 min="1900"
                                 max="2100"
-                                className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition ${
+                                className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent transition ${
                                     errors.tahun ? 'border-rose-400 bg-rose-50' : 'border-slate-200'
                                 }`}
                             />
@@ -95,7 +95,7 @@ export default function DataSeranganForm({
                             <select
                                 value={data.kecamatan_id}
                                 onChange={(e) => onChange('kecamatan_id', e.target.value)}
-                                className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition ${
+                                className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent transition ${
                                     errors.kecamatan_id ? 'border-rose-400 bg-rose-50' : 'border-slate-200'
                                 }`}
                             >
@@ -117,7 +117,7 @@ export default function DataSeranganForm({
                             <select
                                 value={data.opt_id}
                                 onChange={(e) => onChange('opt_id', e.target.value)}
-                                className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition ${
+                                className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent transition ${
                                     errors.opt_id ? 'border-rose-400 bg-rose-50' : 'border-slate-200'
                                 }`}
                             >
@@ -139,7 +139,7 @@ export default function DataSeranganForm({
                             <select
                                 value={data.musim_tanaman}
                                 onChange={(e) => onChange('musim_tanaman', e.target.value)}
-                                className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition ${
+                                className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent transition ${
                                     errors.musim_tanaman ? 'border-rose-400 bg-rose-50' : 'border-slate-200'
                                 }`}
                             >
@@ -164,7 +164,7 @@ export default function DataSeranganForm({
                                 value={data.jumlah_serangan}
                                 onChange={(e) => onChange('jumlah_serangan', e.target.value)}
                                 placeholder="0.00"
-                                className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition ${
+                                className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent transition ${
                                     errors.jumlah_serangan ? 'border-rose-400 bg-rose-50' : 'border-slate-200'
                                 }`}
                             />
@@ -185,7 +185,7 @@ export default function DataSeranganForm({
                                 value={data.luas_puso}
                                 onChange={(e) => onChange('luas_puso', e.target.value)}
                                 placeholder="0.00"
-                                className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition ${
+                                className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent transition ${
                                     errors.luas_puso ? 'border-rose-400 bg-rose-50' : 'border-slate-200'
                                 }`}
                             />
@@ -207,7 +207,7 @@ export default function DataSeranganForm({
                         <button
                             type="submit"
                             disabled={processing}
-                            className="px-5 py-2 text-sm font-semibold text-white bg-emerald-500 hover:bg-emerald-600 rounded-xl transition disabled:opacity-60 flex items-center gap-2"
+                            className="px-5 py-2 text-sm font-semibold text-white bg-primary-500 hover:bg-primary-600 rounded-xl transition disabled:opacity-60 flex items-center gap-2"
                         >
                             {processing ? 'Menyimpan...' : isCreate ? 'Simpan' : 'Perbarui'}
                         </button>

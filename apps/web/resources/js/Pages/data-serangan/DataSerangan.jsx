@@ -37,12 +37,12 @@ export default function DataSerangan({
                         <nav className="text-xs font-semibold text-slate-400 mb-1 flex items-center gap-1.5">
                             <span>Dashboard</span>
                             <span>/</span>
-                            <span className="text-emerald-700">
+                            <span className="text-primary-700">
                                 Manajemen OPT
                             </span>
                         </nav>
                         <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2 mt-1">
-                            <Bug className="w-6 h-6 text-emerald-500" />
+                            <Bug className="w-6 h-6 text-primary-500" />
                             Data Serangan OPT
                         </h1>
                         <p className="text-sm text-slate-500 mt-1">
@@ -54,13 +54,13 @@ export default function DataSerangan({
                     <div className="flex flex-wrap items-center gap-2.5">
                         <button
                             onClick={ds.openCreate}
-                            className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition shadow-sm"
+                            className="flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition shadow-sm"
                         >
                             <Plus className="w-4 h-4" /> Tambah Data
                         </button>
                         <button
                             onClick={ds.openImport}
-                            className="flex items-center gap-2 bg-white text-emerald-800 border border-emerald-700 px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-emerald-50 transition shadow-sm"
+                            className="flex items-center gap-2 bg-white text-primary-800 border border-primary-700 px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-primary-50 transition shadow-sm"
                         >
                             <FileSpreadsheet className="w-4 h-4" /> Import Excel
                         </button>

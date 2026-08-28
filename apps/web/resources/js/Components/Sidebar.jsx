@@ -16,7 +16,7 @@ export default function Sidebar({ navItems, currentTab, sidebarOpen, setSidebarO
             <div className="p-6 border-b border-slate-100 relative">
                 <h1 className="text-xl font-extrabold text-slate-900 tracking-tight">
                     AgriPredict{" "}
-                    <span className="text-emerald-600">GIS</span>
+                    <span className="text-primary-600">GIS</span>
                 </h1>
                 <p className="text-xs text-slate-500 font-medium mt-0.5">
                     Admin Panel • Dinas Pertanian

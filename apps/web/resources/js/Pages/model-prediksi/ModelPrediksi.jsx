@@ -41,7 +41,7 @@ export default function ModelPrediksi() {
                     <div className="lg:col-span-4 bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col justify-between">
                         <div className="space-y-5">
                             <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
-                                <Sliders className="w-5 h-5 text-emerald-800" />
+                                <Sliders className="w-5 h-5 text-primary-800" />
                                 <h2 className="text-lg font-bold text-slate-900">
                                     Parameter Analisis
                                 </h2>
@@ -120,7 +120,7 @@ export default function ModelPrediksi() {
                     <div className="lg:col-span-8 bg-[#0C2329] rounded-2xl relative overflow-hidden border border-slate-800 shadow-md min-h-[380px] flex flex-col">
                         {/* Map Header / Live Badge */}
                         <div className="absolute top-4 left-4 z-20 flex items-center gap-2 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full shadow-xs">
-                            <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                            <span className="w-2.5 h-2.5 bg-primary-500 rounded-full animate-pulse"></span>
                             <span className="text-xs font-extrabold text-slate-900 tracking-wide uppercase">
                                 LIVE: Analisis Spasial
                             </span>
@@ -242,7 +242,7 @@ export default function ModelPrediksi() {
                             {/* Floating Map Legend Box Bottom Left */}
                             <div className="absolute bottom-4 left-4 z-20 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-xl max-w-xs border border-slate-100 text-xs">
                                 <div className="flex items-center gap-1.5 text-slate-800 font-bold mb-1">
-                                    <Info className="w-4 h-4 text-emerald-700" />
+                                    <Info className="w-4 h-4 text-primary-700" />
                                     <span>Keterangan Peta</span>
                                 </div>
                                 <p className="text-[11px] font-medium text-slate-500 mb-2">
@@ -251,7 +251,7 @@ export default function ModelPrediksi() {
 
                                 <div className="space-y-1.5 font-semibold text-slate-700">
                                     <div className="flex items-center gap-2">
-                                        <span className="w-3.5 h-3.5 rounded bg-emerald-500"></span>
+                                        <span className="w-3.5 h-3.5 rounded bg-primary-500"></span>
                                         <span>0 - 10 Ha (Rendah)</span>
                                     </div>
                                     <div className="flex items-center gap-2">

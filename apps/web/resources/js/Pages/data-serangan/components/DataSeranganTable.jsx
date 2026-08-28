@@ -90,7 +90,7 @@ export default function DataSeranganTable({
                                                 onClick={() =>
                                                     onEdit(Rows3Icon)
                                                 }
-                                                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition"
+                                                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-lg transition"
                                             >
                                                 <Pencil className="w-3.5 h-3.5" />{" "}
                                                 Edit

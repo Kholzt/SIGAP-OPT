@@ -21,7 +21,7 @@ class StatusEndemisController extends Controller
     public function index(Request $request)
     {
         $musim          = $request->musim;
-        $opt_id         = $request->opt_id;
+        $opt_id         = $request->opt_id ?? 2;
         $kecamatan_id   = $request->kecamatan_id;
         $this->statusEndemisService->calculateEndemicStatus();
         $allKecamatan   = $this->kecamatanService->getAllKecamatan(select: ['nama_kecamatan', 'id']);

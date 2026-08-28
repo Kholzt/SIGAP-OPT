@@ -61,8 +61,8 @@ export default function DataSeranganImportModal({ isOpen, onClose }) {
 
                 {/* Icon + Title */}
                 <div className="flex flex-col items-center text-center mb-5 mt-2">
-                    <div className="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center mb-3">
-                        <FileSpreadsheet className="w-7 h-7 text-emerald-500" />
+                    <div className="w-14 h-14 rounded-full bg-primary-100 flex items-center justify-center mb-3">
+                        <FileSpreadsheet className="w-7 h-7 text-primary-500" />
                     </div>
                     <h2 className="text-lg font-bold text-slate-900">Import Data Serangan</h2>
                     <p className="text-sm text-slate-500 mt-1">
@@ -77,7 +77,7 @@ export default function DataSeranganImportModal({ isOpen, onClose }) {
                     onDrop={handleDrop}
                     onClick={() => inputRef.current?.click()}
                     className={`border-2 border-dashed rounded-xl p-8 mb-4 flex flex-col items-center cursor-pointer transition ${
-                        dragOver ? 'border-emerald-400 bg-emerald-50' : 'border-slate-200 hover:bg-slate-50'
+                        dragOver ? 'border-primary-400 bg-primary-50' : 'border-slate-200 hover:bg-slate-50'
                     }`}
                 >
                     <input
@@ -89,8 +89,8 @@ export default function DataSeranganImportModal({ isOpen, onClose }) {
                     />
                     {file ? (
                         <>
-                            <CheckCircle className="w-8 h-8 text-emerald-500 mb-2" />
-                            <span className="text-sm font-semibold text-emerald-700">{file.name}</span>
+                            <CheckCircle className="w-8 h-8 text-primary-500 mb-2" />
+                            <span className="text-sm font-semibold text-primary-700">{file.name}</span>
                             <span className="text-xs text-slate-400 mt-1">
                                 {(file.size / 1024).toFixed(1)} KB — Klik untuk ganti
                             </span>
@@ -108,7 +108,7 @@ export default function DataSeranganImportModal({ isOpen, onClose }) {
                 <div className="text-center mb-5">
                     <a
                         href="#"
-                        className="text-xs font-semibold text-emerald-600 hover:underline"
+                        className="text-xs font-semibold text-primary-600 hover:underline"
                         onClick={(e) => e.preventDefault()}
                     >
                         Download Template Excel
@@ -128,7 +128,7 @@ export default function DataSeranganImportModal({ isOpen, onClose }) {
                         type="button"
                         onClick={handleImport}
                         disabled={!file || processing}
-                        className="flex-1 px-5 py-2.5 text-sm font-semibold text-white bg-emerald-500 hover:bg-emerald-600 rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="flex-1 px-5 py-2.5 text-sm font-semibold text-white bg-primary-500 hover:bg-primary-600 rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         {processing ? 'Mengimpor...' : 'Import Data'}
                     </button>
