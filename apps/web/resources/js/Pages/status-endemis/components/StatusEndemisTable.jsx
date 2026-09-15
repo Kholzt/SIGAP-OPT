@@ -53,9 +53,9 @@ export default function StatusEndemisTable({
 
                 <button
                     onClick={handleExport}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 font-bold text-xs rounded-xl shadow-xs transition cursor-pointer self-start sm:self-auto"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 hover:text-primary-600 font-medium text-sm rounded-lg shadow-sm transition-colors cursor-pointer self-start sm:self-auto"
                 >
-                    <Download className="w-4 h-4 text-slate-500" />
+                    <Download className="w-4 h-4" />
                     <span>Ekspor Data</span>
                 </button>
             </div>
@@ -64,14 +64,14 @@ export default function StatusEndemisTable({
                 <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
-                            <tr className="bg-[#EBF1FB] border-b border-slate-200">
-                                <th className="py-4 px-6 text-xs font-bold text-slate-700 uppercase tracking-wider">
+                            <tr className="bg-slate-50 border-b border-slate-200">
+                                <th className="py-4 px-6 text-xs font-semibold text-slate-500 uppercase tracking-wider">
                                     Nama Kecamatan
                                 </th>
                                 {allOPT.map((o) => (
                                     <th
                                         key={o.id}
-                                        className="py-4 px-4 text-xs font-bold text-slate-700 uppercase tracking-wider text-center"
+                                        className="py-4 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider text-center"
                                     >
                                         {o.nama_opt}
                                     </th>

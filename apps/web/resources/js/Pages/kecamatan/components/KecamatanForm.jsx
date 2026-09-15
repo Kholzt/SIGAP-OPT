@@ -22,6 +22,7 @@ export default function KecamatanForm({ modalType, data, errors, processing, onC
                             Nama Kecamatan <span className="text-rose-500">*</span>
                         </label>
                         <input
+                            data-testid="input-nama-kecamatan"
                             type="text"
                             value={data.nama_kecamatan}
                             onChange={(e) => onChange('nama_kecamatan', e.target.value)}
@@ -30,7 +31,7 @@ export default function KecamatanForm({ modalType, data, errors, processing, onC
                             className={`w-full px-4 py-2.5 text-sm border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent transition ${errors.nama_kecamatan ? 'border-rose-400 bg-rose-50' : 'border-slate-200'}`}
                         />
                         {errors.nama_kecamatan && (
-                            <p className="mt-1.5 text-xs text-rose-600 font-medium">{errors.nama_kecamatan}</p>
+                            <p data-testid="error-nama-kecamatan" className="mt-1.5 text-xs text-rose-600 font-medium">{errors.nama_kecamatan}</p>
                         )}
                         <p className="mt-1 text-xs text-slate-400">{data.nama_kecamatan.length}/100 karakter</p>
                     </div>
@@ -38,7 +39,7 @@ export default function KecamatanForm({ modalType, data, errors, processing, onC
                         <button type="button" onClick={onClose} className="px-4 py-2 text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition">
                             Batal
                         </button>
-                        <button type="submit" disabled={processing} className="px-5 py-2 text-sm font-semibold text-white bg-primary-500 hover:bg-primary-600 rounded-xl transition disabled:opacity-60">
+                        <button type="submit" data-testid="btn-submit-kecamatan" disabled={processing} className="px-5 py-2 text-sm font-semibold text-white bg-primary-500 hover:bg-primary-600 rounded-xl transition disabled:opacity-60">
                             {processing ? 'Menyimpan...' : modalType === 'create' ? 'Simpan' : 'Perbarui'}
                         </button>
                     </div>

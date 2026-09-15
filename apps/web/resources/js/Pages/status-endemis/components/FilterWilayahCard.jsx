@@ -27,7 +27,7 @@ export default function FilterWilayahCard({
                     <select
                         value={selectedKecamatan}
                         onChange={(e) => setSelectedKecamatan(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-800 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-xs cursor-pointer"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-800 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 shadow-sm cursor-pointer"
                     >
                         <option value="">Semua Kecamatan</option>
                         {allKecamatan.map((k) => (
@@ -42,7 +42,7 @@ export default function FilterWilayahCard({
                     <select
                         value={selectedOPTId}
                         onChange={(e) => setSelectedOPTId(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-800 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-xs cursor-pointer"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-800 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 shadow-sm cursor-pointer"
                     >
                         {allOPT.map((o, i) => (
                             <option key={o.id} value={o.id}>
@@ -56,7 +56,7 @@ export default function FilterWilayahCard({
                     <select
                         value={selectedMusim}
                         onChange={(e) => setSelectedMusim(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-800 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-xs cursor-pointer"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-slate-800 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-500 shadow-sm cursor-pointer"
                     >
                         {musimList.map((m) => (
                             <option key={m} value={m}>

@@ -68,7 +68,7 @@ export default function Index({ opts, search: initialSearch, flash }) {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                 <div>
                     <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                        <Bug className="w-6 h-6 text-emerald-500" />
+                        <Bug className="w-6 h-6 text-primary-500" />
                         Master Data OPT
                     </h1>
                     <p className="text-sm text-slate-500 mt-1">
@@ -78,7 +78,7 @@ export default function Index({ opts, search: initialSearch, flash }) {
                 </div>
                 <button
                     onClick={openCreate}
-                    className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition shadow-sm"
+                    className="flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition shadow-sm"
                 >
                     <Plus className="w-4 h-4" />
                     Tambah OPT

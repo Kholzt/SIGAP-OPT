@@ -19,10 +19,10 @@ class KecamatanService
         return Kecamatan::select($select)->orderBy($orderBy, $direction)->get();
     }
 
-    public function getPaginatedKecamatan($search = '', $perPage = 10)
+    public function getPaginatedKecamatan($search = '', $perPage = 10, $orderBy = 'id', $direction = 'asc')
     {
         return Kecamatan::when($search, fn ($q) => $q->where('nama_kecamatan', 'like', "%{$search}%"))
-            ->orderBy('id', 'asc')
+            ->orderBy($orderBy, $direction)
             ->paginate($perPage)
             ->withQueryString();
     }

@@ -19,31 +19,31 @@ export default function StatusBadge({ status = "Aman" }) {
     switch (status) {
         case "Aman":
             return (
-                <span className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-bold bg-[#10B981] text-white shadow-2xs">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200">
                     Aman
                 </span>
             );
         case "Potensial":
             return (
-                <span className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-bold bg-[#F59E0B] text-white shadow-2xs">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 border border-amber-200">
                     Potensial
                 </span>
             );
         case "Sporadis":
             return (
-                <span className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-bold bg-[#F87171] text-white shadow-2xs">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-orange-100 text-orange-800 border border-orange-200">
                     Sporadis
                 </span>
             );
         case "Endemis":
             return (
-                <span className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-bold bg-[#EF4444] text-white shadow-2xs">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-100 text-red-800 border border-red-200">
                     Endemis
                 </span>
             );
         default:
             return (
-                <span className="inline-flex items-center px-3.5 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-700">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-200">
                     {status || "Aman"}
                 </span>
             );

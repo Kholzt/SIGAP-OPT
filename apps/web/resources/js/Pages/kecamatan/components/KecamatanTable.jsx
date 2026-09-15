@@ -10,6 +10,7 @@ export default function KecamatanTable({ rows, paginator, searchValue, onSearch,
                 <div className="relative max-w-xs">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                     <input
+                        data-testid="search-kecamatan"
                         type="text"
                         placeholder="Cari nama kecamatan..."
                         value={searchValue}
@@ -39,7 +40,7 @@ export default function KecamatanTable({ rows, paginator, searchValue, onSearch,
                             </tr>
                         ) : (
                             rows.map((kec, idx) => (
-                                <tr key={kec.id} className="hover:bg-slate-50 transition">
+                                <tr key={kec.id} data-testid={`row-kecamatan-${kec.nama_kecamatan}`} className="hover:bg-slate-50 transition">
                                     <td className="px-5 py-3.5 text-slate-400 font-medium">{(paginator?.from ?? 1) + idx}</td>
                                     <td className="px-5 py-3.5 text-slate-800 font-semibold">{kec.nama_kecamatan}</td>
                                     <td className="px-5 py-3.5 text-slate-500">
@@ -49,10 +50,10 @@ export default function KecamatanTable({ rows, paginator, searchValue, onSearch,
                                     </td>
                                     <td className="px-5 py-3.5 text-right">
                                         <div className="flex justify-end gap-2">
-                                            <button onClick={() => onEdit(kec)} className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-lg transition">
+                                            <button data-testid={`btn-edit-${kec.nama_kecamatan}`} onClick={() => onEdit(kec)} className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-primary-600 bg-primary-50 hover:bg-primary-100 rounded-lg transition">
                                                 <Pencil className="w-3.5 h-3.5" /> Edit
                                             </button>
-                                            <button onClick={() => onDelete(kec)} className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-rose-600 bg-rose-50 hover:bg-rose-100 rounded-lg transition">
+                                            <button data-testid={`btn-delete-${kec.nama_kecamatan}`} onClick={() => onDelete(kec)} className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-rose-600 bg-rose-50 hover:bg-rose-100 rounded-lg transition">
                                                 <Trash2 className="w-3.5 h-3.5" /> Hapus
                                             </button>
                                         </div>

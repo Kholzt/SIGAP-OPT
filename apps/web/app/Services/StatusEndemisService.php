@@ -63,14 +63,14 @@ class StatusEndemisService
             DB::beginTransaction();
 
             $currentYear = date('y');
-            $lastMusimTanam = StatusEndemis::latest()->value('musim_tanaman');
-            if (str_contains($lastMusimTanam, $currentYear)) {
-                return;
-            }
 
             $optList = OPT::get('id');
             $kecamatans = Kecamatan::get('id');
 
+            // $lastMusimTanam = StatusEndemis::latest()->value('musim_tanaman');
+            // if (str_contains($lastMusimTanam, $currentYear)) {
+            //     return;
+            // }
             // Musim Kemarau   (MK)
             // Musim Penghujan (MP)
             $musims = ['MK', 'MP'];
@@ -166,7 +166,7 @@ class StatusEndemisService
                         //
                         $total = $ktFinal + $kpFinal + $krFinal + $kfFinal;
                         $status = $this->clasificationStatusEndemis($total);
-                        $nextMusim = $musim == 'MK' ? "$currentYear/".($currentYear + 1) : $currentYear;
+                        $nextMusim = $musim == 'MP' ? "$currentYear/".($currentYear + 1) : $currentYear;
                         $finalData[] = [
                             'opt_id'        => $optId,
                             'kecamatan_id'  => $kecamatanId,

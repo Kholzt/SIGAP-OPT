@@ -18,7 +18,7 @@ class KecamatanController extends Controller
         $search  = $request->input('search', '');
         $perPage = $request->input('per_page', 10);
 
-        $kecamatans = $this->kecamatanService->getPaginatedKecamatan($search, (int) $perPage);
+        $kecamatans = $this->kecamatanService->getPaginatedKecamatan($search, (int) $perPage,"id","desc");
 
         return Inertia::render('kecamatan/Index', [
             'kecamatans' => $kecamatans,

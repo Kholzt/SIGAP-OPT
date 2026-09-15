@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
+import Dropdown from "@/Components/Dropdown";
 import {
     LayoutDashboard,
     Bug,
@@ -19,6 +20,7 @@ import Sidebar from "@/Components/Sidebar";
 
 export default function AdminLayout({ children, currentTab = "Dashboard" }) {
     const [sidebarOpen, setSidebarOpen] = useState(true);
+    const user = usePage().props.auth?.user;
 
     const navItems = [
         { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard, groupName: "Overview" },
@@ -58,15 +60,35 @@ export default function AdminLayout({ children, currentTab = "Dashboard" }) {
                             <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full"></span>
                         </button>
                         <div className="flex items-center gap-3 pl-4 border-l border-slate-200">
-                            <div className="text-right hidden sm:block">
-                                <p className="text-sm font-bold text-slate-800 leading-none">
-                                    Admin Utama
-                                </p>
-                                <p className="text-[11px] font-semibold text-slate-400 tracking-wider uppercase mt-1">
-                                    DINAS PERTANIAN
-                                </p>
-                            </div>
-                            <UserCircle className="w-9 h-9 text-slate-700 stroke-[1.5]" />
+                            <Dropdown>
+                                <Dropdown.Trigger>
+                                    <button data-testid="dropdown-user" className="flex items-center gap-3 focus:outline-none text-left hover:opacity-80 transition-opacity">
+                                        <div className="hidden sm:block">
+                                            <p className="text-sm font-bold text-slate-800 leading-none">
+                                                {user?.nama || "Admin Utama"}
+                                            </p>
+                                            <p className="text-[11px] font-semibold text-slate-400 tracking-wider uppercase mt-1">
+                                                DINAS PERTANIAN
+                                            </p>
+                                        </div>
+                                        <UserCircle className="w-9 h-9 text-slate-700 stroke-[1.5]" />
+                                    </button>
+                                </Dropdown.Trigger>
+                                <Dropdown.Content>
+                                    <Dropdown.Link href={route('profile.edit')}>
+                                        <div className="flex items-center gap-2">
+                                            <UserCircle className="w-4 h-4" />
+                                            Profil
+                                        </div>
+                                    </Dropdown.Link>
+                                    <Dropdown.Link href={route('logout')} method="post" as="button">
+                                        <div data-testid="dropdown-link-logout" className="flex items-center gap-2 text-rose-600 font-medium">
+                                            <LogOut className="w-4 h-4" />
+                                            Keluar
+                                        </div>
+                                    </Dropdown.Link>
+                                </Dropdown.Content>
+                            </Dropdown>
                         </div>
                     </div>
                 </header>

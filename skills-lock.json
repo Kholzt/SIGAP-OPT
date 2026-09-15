@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "laravel-best-practices": {
+      "source": "asyrafhussin/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/laravel-best-practices/SKILL.md",
+      "computedHash": "3f2351dc1821d430b6b58ce24175e0af11f5c11b234198bfc76a6702c05fe3ef"
+    },
+    "python-best-practices": {
+      "source": "nathan-gage/python-skills",
+      "sourceType": "github",
+      "skillPath": "skills/python-best-practices/SKILL.md",
+      "computedHash": "deb37ee615175e50fe9172405daaac4796d2451bae72e77a32bbd65eb37439f2"
+    }
+  }
+}

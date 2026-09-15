@@ -22,7 +22,7 @@ export default function FilterDataSerangan({
     return (
         <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs space-y-4">
             <div className="flex items-center gap-2">
-                <Filter className="w-5 h-5 text-emerald-800" />
+                <Filter className="w-5 h-5 text-primary-600" />
                 <h3 className="text-base font-bold text-slate-900">Filter Data Serangan</h3>
             </div>
 
@@ -38,7 +38,7 @@ export default function FilterDataSerangan({
                         onChange={(e) => setSearchValue(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && onFilter()}
                         placeholder="Kecamatan atau OPT..."
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500"
                     />
                 </div>
 
@@ -50,7 +50,7 @@ export default function FilterDataSerangan({
                     <select
                         value={selectedMusim}
                         onChange={(e) => setSelectedMusim(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500"
                     >
                         <option value="">Semua Musim</option>
                         {allMusim.map((kec) => (
@@ -66,7 +66,7 @@ export default function FilterDataSerangan({
                     <select
                         value={selectedKecamatan}
                         onChange={(e) => setSelectedKecamatan(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500"
                     >
                         <option value="">Semua Wilayah</option>
                         {allKecamatan.map((kec) => (
@@ -83,7 +83,7 @@ export default function FilterDataSerangan({
                     <select
                         value={selectedOPT}
                         onChange={(e) => setSelectedOPT(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500"
                     >
                         <option value="">Semua Jenis</option>
                         {allOPT.map((opt) => (
@@ -96,7 +96,7 @@ export default function FilterDataSerangan({
                 <div className="md:col-span-3 flex items-center gap-2">
                     <button
                         onClick={onFilter}
-                        className="flex-1 bg-[#006654] text-white py-2.5 rounded-xl text-sm font-bold hover:bg-[#005243] transition shadow-xs"
+                        className="flex-1 bg-primary-600 text-white py-2.5 rounded-xl text-sm font-bold hover:bg-primary-700 transition shadow-xs"
                     >
                         Terapkan
                     </button>

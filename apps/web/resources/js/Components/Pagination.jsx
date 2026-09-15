@@ -77,7 +77,7 @@ export default function Pagination({ paginator }) {
                         onClick={() => visit(getPageUrl(page))}
                         className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold transition ${
                             page === current_page
-                                ? "bg-[#006654] text-white shadow-sm"
+                                ? "bg-primary-600 text-white shadow-sm"
                                 : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50"
                         }`}
                     >
