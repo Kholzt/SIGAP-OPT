@@ -1,0 +1,9 @@
+{
+    "scripts": {
+        "artisan": "php apps/web/artisan",
+        "web:serve": "php apps/web/artisan serve",
+        "web:dev": "npm run dev --prefix apps/web",
+        "web:build": "npm run build --prefix apps/web"
+
+    }
+}
